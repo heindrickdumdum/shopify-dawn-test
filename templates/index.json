@@ -69,7 +69,7 @@
         "text"
       ],
       "settings": {
-        "desktop_content_position": "center",
+        "desktop_content_position": "left",
         "content_alignment": "center",
         "color_scheme": "background-1",
         "full_width": true,
@@ -249,7 +249,7 @@
         "footer_linklist_title": "Testing Only",
         "footer_linklist_desc": "Quick description",
         "sizes": "xxl",
-        "featured_product_color": "#060606"
+        "featured_product_color": "#334fb4"
       }
     }
   },
