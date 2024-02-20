@@ -249,7 +249,9 @@
         "footer_linklist_title": "Testing Only",
         "footer_linklist_desc": "Quick description",
         "sizes": "xxl",
-        "featured_product_color": "#334fb4"
+        "featured_product_color": "#334fb4",
+        "menu": "",
+        "button_link": "shopify:\/\/pages\/contact"
       }
     }
   },
