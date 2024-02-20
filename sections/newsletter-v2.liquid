@@ -1,4 +1,10 @@
-<div>
+{%- style -%}
+    .newsletter-v2{
+        background-color: red;
+    }
+{%- endstyle -%}
+
+<div class="newsletter-v2">
     {% if section.settings.sizes == 'xxl' %}
     <p>{{section.settings.footer_linklist_desc}}</p>
     {% endif%}
