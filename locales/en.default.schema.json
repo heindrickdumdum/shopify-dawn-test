@@ -2145,6 +2145,7 @@
     },
     "newsletter": {
       "name": "Email signup",
+      "name2": "Email signup-Version2",
       "settings": {
         "full_width": {
           "label": "Make section full width"
@@ -2175,7 +2176,8 @@
         }
       },
       "presets": {
-        "name": "Email signup"
+        "name": "Email signup",
+        "name2": "Email signup-v2"
       }
     },
     "email-signup-banner": {
