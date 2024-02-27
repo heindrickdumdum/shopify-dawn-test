@@ -4,13 +4,16 @@
         background-size: cover;
         background-position: center;
     }
+    h2{
+      text-align: center;
+    }
 {%- endstyle -%}
 
 <div class="newsletter-v2">
     {% if section.settings.sizes == 'xxl' %}
     <p>{{section.settings.footer_linklist_desc}}</p>
     {% endif%}
-    <h3>{{section.settings.footer_linklist_title}}</h3>
+    <h2>{{section.settings.footer_linklist_title}}</h2>
     <!-- <img src="{{ section.settings.image_with_text_image | image_url: width: 1500 }}"> -->
     <p>{{section.settings.sizes}}</p>
 
