@@ -72,7 +72,7 @@
         "desktop_content_position": "left",
         "content_alignment": "center",
         "color_scheme": "background-1",
-        "full_width": true,
+        "full_width": false,
         "padding_top": 40,
         "padding_bottom": 0
       }
@@ -248,7 +248,8 @@
       "settings": {
         "footer_linklist_title": "Shop Now",
         "padding_top": 50,
-        "padding_bottom": 50
+        "padding_bottom": 50,
+        "full_width": true
       }
     }
   },
