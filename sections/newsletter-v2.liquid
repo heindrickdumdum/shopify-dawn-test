@@ -7,14 +7,13 @@
 {%- endstyle -%}
 
 <div class="newsletter-v2">
-    <h1>HELLO DEWEY</h1>
     {% if section.settings.sizes == 'xxl' %}
     <p>{{section.settings.footer_linklist_desc}}</p>
     {% endif%}
-    <h1>{{section.settings.footer_linklist_title}}</h1>
+    <h3>{{section.settings.footer_linklist_title}}</h3>
     <!-- <img src="{{ section.settings.image_with_text_image | image_url: width: 1500 }}"> -->
     <p>{{section.settings.sizes}}</p>
-    <a href="{{section.settings.button_link}}">Button</a>
+
 </div>
 
 {% schema %}
@@ -23,12 +22,12 @@
   "tag": "section",
   "class": "section",
   "settings": [
-    // {
-    //     "type": "text",
-    //     "id": "footer_linklist_title",
-    //     "label": "Heading",
-    //     "default": "Quick links"
-    // },
+    {
+        "type": "text",
+        "id": "footer_linklist_title",
+        "label": "Heading",
+        "default": "Quick links"
+    }
     // {
     //     "type": "text",
     //     "id": "footer_linklist_desc",
@@ -90,6 +89,31 @@
       
       
 
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "column": {
+          "name": "Column",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Heading"
+            },
+            "text": {
+              "label": "Description"
+            },
+            "link_label": {
+              "label": "Link label"
+            },
+            "link": {
+              "label": "Link"
+            }
+          }
+        }
+    }
   ],
   "presets": [
     {
