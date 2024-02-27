@@ -35,7 +35,7 @@
   }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }}-padding">
+<div class="section-{{ section.id }}-padding {% unless section.settings.full_width %} page-width{% endunless %}">
   <div class="newsletter-v2">
     {% if section.settings.sizes == 'xxl' %}
     <p>{{section.settings.footer_linklist_desc}}</p>
