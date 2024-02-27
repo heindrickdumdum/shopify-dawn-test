@@ -246,7 +246,9 @@
     "newsletter_v2_8rLT9e": {
       "type": "newsletter-v2",
       "settings": {
-        "footer_linklist_title": "Shop Now"
+        "footer_linklist_title": "Shop Now",
+        "padding_top": 50,
+        "padding_bottom": 50
       }
     }
   },
