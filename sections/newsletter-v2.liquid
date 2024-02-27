@@ -1,4 +1,8 @@
 {%- style -%}
+    .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
     .newsletter-v2{
         background-image: url("{{ section.settings.image_with_text_image | image_url }}");
         background-size: cover;
@@ -31,26 +35,28 @@
   }
 {%- endstyle -%}
 
-<div class="newsletter-v2">
+<div class=".section-{{ section.id }}-padding">
+  <div class="newsletter-v2">
     {% if section.settings.sizes == 'xxl' %}
     <p>{{section.settings.footer_linklist_desc}}</p>
     {% endif%}
     <h2>{{section.settings.footer_linklist_title}}</h2>
     <!-- <img src="{{ section.settings.image_with_text_image | image_url: width: 1500 }}"> -->
     <p>{{section.settings.sizes}}</p>
-</div>
-<div class="row">
-  <div class="column">
-    <div class="box">Box 1</div>
   </div>
-  <div class="column">
-    <div class="box">Box 2</div>
-  </div>
-  <div class="column">
-    <div class="box">Box 3</div>
-  </div>
-  <div class="column">
-    <div class="box">Box 4</div>
+  <div class="row">
+    <div class="column">
+      <div class="box">Box 1</div>
+    </div>
+    <div class="column">
+      <div class="box">Box 2</div>
+    </div>
+    <div class="column">
+      <div class="box">Box 3</div>
+    </div>
+    <div class="column">
+      <div class="box">Box 4</div>
+    </div>
   </div>
 </div>
 
@@ -67,13 +73,17 @@
         "default": "Quick links"
     },
     {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
       "type": "range",
       "id": "padding-top",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "px",
-      "label": "Font size",
+      "label": "Padding Top",
       "default": 36
     },
     {
@@ -83,7 +93,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "label": "Font size",
+      "label": "Padding Bottom",
       "default": 36
     }
     // {
