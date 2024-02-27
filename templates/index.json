@@ -246,13 +246,7 @@
     "newsletter_v2_8rLT9e": {
       "type": "newsletter-v2",
       "settings": {
-        "footer_linklist_title": "Testing Only",
-        "footer_linklist_desc": "Quick description",
-        "sizes": "xxl",
-        "featured_product_color": "#334fb4",
-        "menu": "",
-        "button_link": "shopify:\/\/pages\/contact",
-        "image_with_text_image": "shopify:\/\/shop_images\/our-doctors.jpg"
+        "footer_linklist_title": "Shop Now"
       }
     }
   },
