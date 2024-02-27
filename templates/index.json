@@ -249,7 +249,7 @@
         "footer_linklist_title": "Shop Now",
         "padding_top": 50,
         "padding_bottom": 50,
-        "full_width": true
+        "full_width": false
       }
     }
   },
