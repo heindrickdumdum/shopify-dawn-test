@@ -247,7 +247,7 @@
       "type": "newsletter-v2",
       "settings": {
         "footer_linklist_title": "Shop Now",
-        "padding_top": 100,
+        "padding_top": 50,
         "padding_bottom": 50
       }
     }
