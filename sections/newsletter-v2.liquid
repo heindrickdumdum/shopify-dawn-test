@@ -7,6 +7,28 @@
     h2{
       text-align: center;
     }
+    /* Styling for the columns */
+  .column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Styling for the boxes */
+  .box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
 {%- endstyle -%}
 
 <div class="newsletter-v2">
@@ -16,7 +38,20 @@
     <h2>{{section.settings.footer_linklist_title}}</h2>
     <!-- <img src="{{ section.settings.image_with_text_image | image_url: width: 1500 }}"> -->
     <p>{{section.settings.sizes}}</p>
-
+</div>
+<div class="row">
+  <div class="column">
+    <div class="box">Box 1</div>
+  </div>
+  <div class="column">
+    <div class="box">Box 2</div>
+  </div>
+  <div class="column">
+    <div class="box">Box 3</div>
+  </div>
+  <div class="column">
+    <div class="box">Box 4</div>
+  </div>
 </div>
 
 {% schema %}
