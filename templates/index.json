@@ -303,6 +303,7 @@
     "shop_now_jYbwq8": {
       "type": "shop-now",
       "settings": {
+        "heading": "Shop Now"
       }
     }
   },
