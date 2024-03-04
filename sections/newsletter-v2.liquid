@@ -70,7 +70,7 @@
                   </div>
                 </div>
               {%- endif -%}
-              <div class="multicolumn-card__shop">
+              <div style="border-bottom: 2px solid {{ block.settings.border-color }};" class="multicolumn-card__shop">
                 {%- if block.settings.title != blank -%}
                   <h3>{{ block.settings.title | escape }}</h3>
                 {%- endif -%}
@@ -80,6 +80,7 @@
                 {%- if block.settings.link_label != blank -%}
                   <a class="link animate-arrow" {% if block.settings.link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label | escape }}<span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a>
                 {%- endif -%}
+                <p>{{ block.settings.border-color }}</p>
               </div>
             </div>
           </li>
