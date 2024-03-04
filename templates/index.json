@@ -299,6 +299,11 @@
         "padding_bottom": 50,
         "full_width": false
       }
+    },
+    "shop_now_jYbwq8": {
+      "type": "shop-now",
+      "settings": {
+      }
     }
   },
   "order": [
@@ -309,6 +314,7 @@
     "video",
     "multicolumn",
     "newsletter_7QzAt4",
-    "newsletter_v2_8rLT9e"
+    "newsletter_v2_8rLT9e",
+    "shop_now_jYbwq8"
   ]
 }
