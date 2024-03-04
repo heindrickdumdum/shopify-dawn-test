@@ -16,7 +16,6 @@
         {%- for store in section.blocks -%}
             <div style="border-bottom: 2px solid {{ store.settings.border-color }};" class="multiple-box">
                 <img src="{{ store.settings.logo | image_url: width: 100 }}">
-                <p>{{ store.settings.border-color }}</p>
             </div>
         {%- endfor -%}
     </div>
