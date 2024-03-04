@@ -252,7 +252,8 @@
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "border-color": "#121212"
           }
         },
         "column_wBjjpR": {
@@ -261,7 +262,8 @@
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "border-color": "#1773b0"
           }
         },
         "column_EKaJbH": {
@@ -270,7 +272,8 @@
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "border-color": "#dd1d1d"
           }
         },
         "column_EXAV7e": {
@@ -279,7 +282,8 @@
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "border-color": "#334fb4"
           }
         }
       },
@@ -293,8 +297,7 @@
         "footer_linklist_title": "Shop Now",
         "padding_top": 50,
         "padding_bottom": 50,
-        "full_width": false,
-        "border-color": "#dd1d1d"
+        "full_width": false
       }
     }
   },
