@@ -302,6 +302,18 @@
     },
     "shop_now_jYbwq8": {
       "type": "shop-now",
+      "blocks": {
+        "column_UEe4m4": {
+          "type": "column",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/black_1c01c2a3-8554-4749-b424-211b9e64bd94.jpg",
+            "border-color": "#334fb4"
+          }
+        }
+      },
+      "block_order": [
+        "column_UEe4m4"
+      ],
       "settings": {
         "heading": "Shop Now"
       }
