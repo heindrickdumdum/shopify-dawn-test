@@ -266,6 +266,16 @@
             "border-color": "#1773b0"
           }
         },
+        "column_WNMBzF": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": "",
+            "border-color": ""
+          }
+        },
         "column_EKaJbH": {
           "type": "column",
           "settings": {
@@ -290,6 +300,7 @@
       "block_order": [
         "column_QpqLVf",
         "column_wBjjpR",
+        "column_WNMBzF",
         "column_EKaJbH",
         "column_EXAV7e"
       ],
@@ -306,28 +317,28 @@
         "column_UEe4m4": {
           "type": "column",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/black_1c01c2a3-8554-4749-b424-211b9e64bd94.jpg",
+            "logo": "shopify:\/\/shop_images\/2417d27bc0514b4d5c79025f47163c42.jpg",
             "border-color": "#334fb4"
           }
         },
         "column_rrEHkw": {
           "type": "column",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/red_72a5d073-99f7-492b-a551-3c232c498d41.jpg",
+            "logo": "shopify:\/\/shop_images\/amazon-icon.webp",
             "border-color": "#1773b0"
           }
         },
         "column_kJK497": {
           "type": "column",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/tan_a27f789d-8034-4241-b7ec-2ba7e2521fd2.jpg",
+            "logo": "shopify:\/\/shop_images\/Walmart_logo_svg.png",
             "border-color": "#dd1d1d"
           }
         },
         "column_qJ4QPy": {
           "type": "column",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/black_1c01c2a3-8554-4749-b424-211b9e64bd94.jpg",
+            "logo": "shopify:\/\/shop_images\/shop-app6999.jpg",
             "border-color": "#121212"
           }
         }
