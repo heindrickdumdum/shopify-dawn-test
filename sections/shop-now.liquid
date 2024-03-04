@@ -1,5 +1,8 @@
 <div>
-    <h3>{{ section.settings.heading }}</h3>
+    <h2>{{ section.settings.heading }}</h2>
+    {%- for new in section.blocks -%}
+        <p>{{ new.settings.border-color }}</p>
+    {%- endfor -%}
 </div>
 
 {% schema %}
@@ -13,6 +16,24 @@
                 "id": "heading",
                 "label": "Heading",
                 "default": "Quick links"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "store",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "logo",
+                        "label": "Logo"
+                    },
+                    {
+                        "type": "color",
+                        "id": "border-color",
+                        "label": "Box Border Color"
+                    }
+                ]
             }
         ],
         "presets": [
