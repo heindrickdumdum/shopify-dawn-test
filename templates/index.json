@@ -317,28 +317,28 @@
         "column_UEe4m4": {
           "type": "column",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/2417d27bc0514b4d5c79025f47163c42.jpg",
+            "logo": "shopify:\/\/shop_images\/Target.png",
             "border-color": "#334fb4"
           }
         },
         "column_rrEHkw": {
           "type": "column",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/amazon-icon.webp",
+            "logo": "shopify:\/\/shop_images\/Amazon.png",
             "border-color": "#1773b0"
           }
         },
         "column_kJK497": {
           "type": "column",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/Walmart_logo_svg.png",
+            "logo": "shopify:\/\/shop_images\/walmart.png",
             "border-color": "#dd1d1d"
           }
         },
         "column_qJ4QPy": {
           "type": "column",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/shop-app6999.jpg",
+            "logo": "shopify:\/\/shop_images\/shop.png",
             "border-color": "#121212"
           }
         }
