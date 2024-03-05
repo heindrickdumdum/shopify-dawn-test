@@ -13,6 +13,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 124px 
     }
     .multiple-box img{
         max-width: 100px;
@@ -22,7 +23,7 @@
     <h2>{{ section.settings.heading }}</h2>
     <div class="store-boxes">
         {%- for store in section.blocks -%}
-            <div style="border-bottom: 2px solid {{ store.settings.border-color }};" class="multiple-box">
+            <div style="border-bottom: 4px solid {{ store.settings.border-color }};" class="multiple-box">
                 <img src="{{ store.settings.logo | image_url: width: original }}">
             </div>
         {%- endfor -%}
