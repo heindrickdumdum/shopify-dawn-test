@@ -121,6 +121,14 @@
         "sale_price": "Prezzo scontato",
         "unit_price": "Prezzo unitario"
       },
+      "back_in_stock": {
+        "heading": "Avvisami quando torna disponibile",
+        "label": "Indirizzo e-mail",
+        "button": "Avvisami",
+        "consent_html": "Ti invieremo una sola e-mail sulla disponibilità di questo prodotto. Nessuna newsletter. Consulta la nostra {{ privacy_link }}.",
+        "privacy_link": "informativa sulla privacy",
+        "success": "Grazie! Ti invieremo una sola e-mail quando questo prodotto tornerà disponibile."
+      },
       "share": "Condividi questo prodotto",
       "sold_out": "Esaurito",
       "unavailable": "Non disponibile",

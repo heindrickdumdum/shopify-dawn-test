@@ -120,6 +120,14 @@
         "sale_price": "Giá bán",
         "unit_price": "Đơn giá"
       },
+      "back_in_stock": {
+        "heading": "Thông báo cho tôi khi có hàng trở lại",
+        "label": "Địa chỉ email",
+        "button": "Thông báo cho tôi",
+        "consent_html": "Chúng tôi sẽ gửi cho bạn một email duy nhất về tình trạng còn hàng của sản phẩm này. Không có bản tin. Xem {{ privacy_link }} của chúng tôi.",
+        "privacy_link": "chính sách quyền riêng tư",
+        "success": "Cảm ơn bạn! Chúng tôi sẽ gửi một email khi sản phẩm này có hàng trở lại."
+      },
       "share": "Chia sẻ sản phẩm này",
       "sold_out": "Đã bán hết",
       "unavailable": "Không có sẵn",

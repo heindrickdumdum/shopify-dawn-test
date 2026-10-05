@@ -1244,3 +1244,25 @@ a.product__text {
   margin-left: 1.2rem;
   flex-shrink: 0;
 }
+
+/* Back-in-stock notification form */
+.back-in-stock {
+  margin-top: 2rem;
+  max-width: 44rem;
+}
+
+.back-in-stock__heading {
+  margin: 0 0 1rem;
+}
+
+.back-in-stock__button {
+  margin-top: 1rem;
+}
+
+.back-in-stock__consent {
+  margin: 1rem 0 0;
+}
+
+.back-in-stock__success {
+  margin-top: 1rem;
+}

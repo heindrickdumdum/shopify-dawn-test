@@ -120,6 +120,14 @@
         "sale_price": "Verkaufspreis",
         "unit_price": "Grundpreis"
       },
+      "back_in_stock": {
+        "heading": "Benachrichtige mich, wenn es wieder da ist",
+        "label": "E-Mail-Adresse",
+        "button": "Benachrichtigen",
+        "consent_html": "Wir senden dir einmalig eine E-Mail zur Verfügbarkeit dieses Produkts. Kein Newsletter. Mehr dazu in unserer {{ privacy_link }}.",
+        "privacy_link": "Datenschutzerklärung",
+        "success": "Danke! Wir senden dir einmalig eine E-Mail, sobald dieses Produkt wieder verfügbar ist."
+      },
       "share": "Dieses Produkt teilen",
       "sold_out": "Ausverkauft",
       "unavailable": "Nicht verfügbar",

@@ -141,6 +141,14 @@
         "sale_price": "Sale price",
         "unit_price": "Unit price"
       },
+      "back_in_stock": {
+        "heading": "Notify me when it's back",
+        "label": "Email address",
+        "button": "Notify me",
+        "consent_html": "We'll email you once about this product's availability. No newsletter. See our {{ privacy_link }}.",
+        "privacy_link": "privacy policy",
+        "success": "Thanks! We'll email you once if this product is back in stock."
+      },
       "share": "Share this product",
       "sold_out": "Sold out",
       "unavailable": "Unavailable",

@@ -1,0 +1,79 @@
+{%- comment -%}
+  Back-in-stock notification capture (MVP, capture only: no automated restock emails).
+  Creates/updates a Shopify customer via the native `customer` form and tags it with
+  `back-in-stock-notification` and `bis-<product.handle>`.
+
+  Accepts:
+  - product: {Object} Product object
+  - section_id: {String} Section id, used to build unique element ids
+
+  Usage:
+  {% render 'back-in-stock-form', product: product, section_id: section.id %}
+{%- endcomment -%}
+
+{%- assign show_back_in_stock = false -%}
+{%- unless product.available -%}
+  {%- unless product.tags contains 'no-restock' -%}
+    {%- assign show_back_in_stock = true -%}
+  {%- endunless -%}
+{%- endunless -%}
+
+{%- if show_back_in_stock -%}
+  {%- capture privacy_link -%}
+    {%- if shop.privacy_policy.url != blank -%}
+      <a href="{{ shop.privacy_policy.url }}" class="link underlined-link">{{ 'products.product.back_in_stock.privacy_link' | t }}</a>
+    {%- else -%}
+      {{ 'products.product.back_in_stock.privacy_link' | t }}
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <div class="back-in-stock">
+    {%- form 'customer', id: 'BackInStockForm', class: 'back-in-stock__form' -%}
+      <input type="hidden" name="contact[tags]" value="back-in-stock-notification, bis-{{ product.handle }}">
+      <h3 class="back-in-stock__heading h5" id="BackInStock-heading--{{ section_id }}">
+        {{ 'products.product.back_in_stock.heading' | t }}
+      </h3>
+      <div class="field">
+        <input
+          id="BackInStock-email--{{ section_id }}"
+          type="email"
+          name="contact[email]"
+          class="field__input"
+          value="{{ form.email }}"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
+          placeholder="{{ 'products.product.back_in_stock.label' | t }}"
+          aria-required="true"
+          aria-describedby="BackInStock-consent--{{ section_id }}{% if form.errors %} BackInStock-error--{{ section_id }}{% elsif form.posted_successfully? %} BackInStock-success--{{ section_id }}{% endif %}"
+          {% if form.errors %}
+            autofocus
+            aria-invalid="true"
+          {% endif %}
+          required
+        >
+        <label class="field__label" for="BackInStock-email--{{ section_id }}">
+          {{ 'products.product.back_in_stock.label' | t }}
+        </label>
+      </div>
+      {%- if form.errors -%}
+        <small class="form__message" id="BackInStock-error--{{ section_id }}">
+          {%- render 'icon-error' -%}
+          {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+        </small>
+      {%- endif -%}
+      <button type="submit" class="back-in-stock__button button button--secondary button--full-width" name="commit">
+        {{ 'products.product.back_in_stock.button' | t }}
+      </button>
+      <p class="back-in-stock__consent caption" id="BackInStock-consent--{{ section_id }}">
+        {{ 'products.product.back_in_stock.consent_html' | t: privacy_link: privacy_link }}
+      </p>
+      {%- if form.posted_successfully? -%}
+        <h3 class="form__message back-in-stock__success" id="BackInStock-success--{{ section_id }}" tabindex="-1" autofocus>
+          {%- render 'icon-success' -%}
+          {{ 'products.product.back_in_stock.success' | t }}
+        </h3>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+{%- endif -%}
