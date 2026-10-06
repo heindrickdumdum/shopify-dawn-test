@@ -1,0 +1,88 @@
+{%- liquid
+  assign uid = 'dml-steps-' | append: section.id
+  assign s = section.settings
+-%}
+
+<div id="{{ uid }}" class="dml-steps">
+  <div class="dml-steps__wrap">
+    <div class="dml-steps__head">
+      {%- if s.eyebrow != blank -%}<p class="dml-steps__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+      <h2 class="dml-steps__title">{{ s.heading }}</h2>
+    </div>
+    <ol class="dml-steps__list">
+      {%- for block in section.blocks -%}
+        <li class="dml-steps__item" {{ block.shopify_attributes }}>
+          <h3 class="dml-steps__item-title">{{ block.settings.title }}</h3>
+          <p class="dml-steps__item-text">{{ block.settings.text }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</div>
+
+{%- style -%}
+  #{{ uid }}, #{{ uid }} *, #{{ uid }} *::before, #{{ uid }} *::after { box-sizing: border-box; }
+  #{{ uid }} :is(h2, h3, p, ol, li) { margin: 0; padding: 0; text-transform: none; letter-spacing: normal; }
+  #{{ uid }} {
+    --c-primary: {{ s.color_primary }};
+    --c-accent: {{ s.color_accent }};
+    --c-gold: {{ s.color_gold }};
+    background: {{ s.color_bg }};
+    padding: {{ s.padding_top }}px 20px {{ s.padding_bottom }}px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #5b5b66;
+  }
+  #{{ uid }} .dml-steps__wrap { max-width: 1120px; margin: 0 auto; }
+  #{{ uid }} .dml-steps__head { text-align: center; }
+  #{{ uid }} .dml-steps__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+  #{{ uid }} .dml-steps__title { font: 800 clamp(26px, 4vw, 38px)/1.15 'Montserrat', sans-serif; color: var(--c-primary); }
+  #{{ uid }} .dml-steps__list { list-style: none; counter-reset: dml-step; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; margin-top: 40px; }
+  #{{ uid }} .dml-steps__item { counter-increment: dml-step; text-align: center; padding: 0 10px; }
+  #{{ uid }} .dml-steps__item::before { content: counter(dml-step); display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--c-gold); color: #fff; font: 800 20px/1 'Montserrat', sans-serif; margin: 0 auto 14px; }
+  #{{ uid }} .dml-steps__item-title { font: 700 17px/1.3 'Montserrat', sans-serif; color: var(--c-primary); margin-bottom: 6px; }
+  #{{ uid }} .dml-steps__item-text { font-size: 15px; }
+
+  @media (max-width: 860px) {
+    #{{ uid }} { padding-top: {{ s.padding_top | times: 0.75 | round }}px; padding-bottom: {{ s.padding_bottom | times: 0.75 | round }}px; }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "DML Steps",
+  "class": "dml-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How to use" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Easy as 1-2-3" },
+    { "type": "color", "id": "color_primary", "label": "Primary", "default": "#1b2550" },
+    { "type": "color", "id": "color_accent", "label": "Accent", "default": "#f86239" },
+    { "type": "color", "id": "color_gold", "label": "Step number", "default": "#c8a05a" },
+    { "type": "color", "id": "color_bg", "label": "Background", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Step" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "DML Steps",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Tear a sachet", "text": "One 5.1g single-serve sachet per day." } },
+        { "type": "step", "settings": { "title": "Mix it in", "text": "Stir into water, smoothies, shakes or soups." } },
+        { "type": "step", "settings": { "title": "Make it a habit", "text": "Best on an empty stomach in the morning, paired with Vitamin C." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

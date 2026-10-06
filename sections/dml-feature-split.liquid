@@ -1,0 +1,121 @@
+{%- liquid
+  assign uid = 'dml-split-' | append: section.id
+  assign s = section.settings
+  case s.fallback_image
+    when 'helps'
+      assign fallback = 'dml-collagen-helps.png'
+    when 'science'
+      assign fallback = 'dml-collagen-science.jpg'
+    when 'ingredients'
+      assign fallback = 'dml-collagen-ingredients.png'
+    else
+      assign fallback = blank
+  endcase
+-%}
+
+{%- if s.anchor_id != blank -%}<div id="{{ s.anchor_id }}"></div>{%- endif -%}
+<div id="{{ uid }}" class="dml-split dml-split--{{ s.image_position }}">
+  <div class="dml-split__wrap">
+    <div class="dml-split__media">
+      {%- if s.image != blank -%}
+        {{ s.image | image_url: width: 900 | image_tag: widths: '450, 600, 900', sizes: '(min-width: 861px) 45vw, 90vw', loading: 'lazy', alt: s.image.alt | default: s.heading }}
+      {%- elsif fallback != blank -%}
+        <img src="{{ fallback | asset_url }}" alt="{{ s.heading | escape }}" width="900" height="900" loading="lazy">
+      {%- endif -%}
+    </div>
+    <div class="dml-split__copy">
+      {%- if s.eyebrow != blank -%}<p class="dml-split__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+      <h2 class="dml-split__title">{{ s.heading }}</h2>
+      {%- if s.text != blank -%}<div class="dml-split__text">{{ s.text }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ul class="dml-split__checks">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  #{{ uid }}, #{{ uid }} *, #{{ uid }} *::before, #{{ uid }} *::after { box-sizing: border-box; }
+  #{{ uid }} :is(h2, p, ul, li, div) { margin: 0; padding: 0; text-transform: none; letter-spacing: normal; }
+  #{{ uid }} {
+    --c-primary: {{ s.color_primary }};
+    --c-accent: {{ s.color_accent }};
+    background: {{ s.color_bg }};
+    padding: {{ s.padding_top }}px 20px {{ s.padding_bottom }}px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #5b5b66;
+  }
+  #{{ uid }} .dml-split__wrap { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  #{{ uid }}.dml-split--right .dml-split__media { order: 2; }
+  #{{ uid }} .dml-split__media img { display: block; width: 100%; height: auto; border-radius: 20px; }
+  #{{ uid }} .dml-split__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+  #{{ uid }} .dml-split__title { font: 800 clamp(24px, 3.6vw, 34px)/1.15 'Montserrat', sans-serif; color: var(--c-primary); margin-bottom: 14px; }
+  #{{ uid }} .dml-split__text p + p { margin-top: 10px; }
+  #{{ uid }} .dml-split__checks { list-style: none; margin-top: 18px; display: grid; gap: 12px; }
+  #{{ uid }} .dml-split__checks li { position: relative; padding-left: 30px; color: #222; }
+  #{{ uid }} .dml-split__checks li::before { content: "✓"; position: absolute; left: 0; top: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--c-primary); color: #fff; font-size: 12px; line-height: 20px; text-align: center; }
+
+  @media (max-width: 860px) {
+    #{{ uid }} { padding-top: {{ s.padding_top | times: 0.7 | round }}px; padding-bottom: {{ s.padding_bottom | times: 0.7 | round }}px; }
+    #{{ uid }} .dml-split__wrap { grid-template-columns: 1fr; }
+    #{{ uid }}.dml-split--right .dml-split__media { order: 0; }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "DML Feature split",
+  "class": "dml-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    {
+      "type": "select", "id": "fallback_image", "label": "Bundled image (if none uploaded)",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "helps", "label": "Helps to (benefits)" },
+        { "value": "science", "label": "Science" },
+        { "value": "ingredients", "label": "Ingredients" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select", "id": "image_position", "label": "Image position",
+      "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }],
+      "default": "left"
+    },
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID (optional)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "color", "id": "color_primary", "label": "Primary", "default": "#1b2550" },
+    { "type": "color", "id": "color_accent", "label": "Accent", "default": "#f86239" },
+    { "type": "color", "id": "color_bg", "label": "Background", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "check",
+      "name": "Check item",
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Highlight" }]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "DML Feature split",
+      "settings": { "heading": "Held to a higher standard", "fallback_image": "helps" },
+      "blocks": [
+        { "type": "check", "settings": { "text": "Grass-fed, pasture-raised bovine collagen peptides" } },
+        { "type": "check", "settings": { "text": "Zero fillers, sugar or additives" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

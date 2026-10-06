@@ -1,0 +1,62 @@
+{%- liquid
+  assign uid = 'dml-stats-' | append: section.id
+  assign s = section.settings
+-%}
+
+<div id="{{ uid }}" class="dml-stats">
+  <ul class="dml-stats__grid">
+    {%- for block in section.blocks -%}
+      <li class="dml-stats__item" {{ block.shopify_attributes }}>
+        <strong class="dml-stats__value">{{ block.settings.value }}</strong>
+        <span class="dml-stats__label">{{ block.settings.label }}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{%- style -%}
+  #{{ uid }}, #{{ uid }} *, #{{ uid }} *::before, #{{ uid }} *::after { box-sizing: border-box; }
+  #{{ uid }} :is(ul, li, strong, span) { margin: 0; padding: 0; text-transform: none; letter-spacing: normal; }
+  #{{ uid }} { background: {{ s.color_bg }}; padding: {{ s.padding_y }}px 20px; font-family: 'Inter', system-ui, sans-serif; }
+  #{{ uid }} .dml-stats__grid { list-style: none; max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; text-align: center; }
+  #{{ uid }} .dml-stats__value { display: block; font: 800 clamp(30px, 4.4vw, 44px)/1.1 'Montserrat', system-ui, sans-serif; color: {{ s.color_value }}; }
+  #{{ uid }} .dml-stats__label { display: block; margin-top: 6px; font-size: 14px; line-height: 1.4; color: {{ s.color_label }}; }
+  @media (max-width: 860px) {
+    #{{ uid }} .dml-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "DML Stats band",
+  "class": "dml-section",
+  "settings": [
+    { "type": "color", "id": "color_bg", "label": "Background", "default": "#f6f4ef" },
+    { "type": "color", "id": "color_value", "label": "Number", "default": "#1b2550" },
+    { "type": "color", "id": "color_label", "label": "Label", "default": "#5b5b66" },
+    { "type": "range", "id": "padding_y", "label": "Vertical padding", "min": 16, "max": 96, "step": 4, "unit": "px", "default": 44 }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "4.5★" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Average rating" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "DML Stats band",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "4.5★", "label": "Average rating" } },
+        { "type": "stat", "settings": { "value": "3,834", "label": "Customer reviews" } },
+        { "type": "stat", "settings": { "value": "100,000+", "label": "Health-conscious users" } },
+        { "type": "stat", "settings": { "value": "5,000mg", "label": "Collagen per sachet" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

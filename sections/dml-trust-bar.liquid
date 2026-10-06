@@ -1,0 +1,54 @@
+{%- liquid
+  assign uid = 'dml-trust-' | append: section.id
+  assign s = section.settings
+-%}
+
+<div id="{{ uid }}" class="dml-trust">
+  <ul class="dml-trust__list">
+    {%- for block in section.blocks -%}
+      <li class="dml-trust__item" {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{%- style -%}
+  #{{ uid }}, #{{ uid }} *, #{{ uid }} *::before, #{{ uid }} *::after { box-sizing: border-box; }
+  #{{ uid }} { background: {{ s.color_bg }}; color: {{ s.color_text }}; padding: {{ s.padding_y }}px 20px; font-family: 'Montserrat', system-ui, sans-serif; }
+  #{{ uid }} .dml-trust__list { list-style: none; margin: 0 auto; padding: 0; max-width: 1120px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; }
+  #{{ uid }} .dml-trust__item { margin: 0; padding: 0; font-size: 13px; font-weight: 600; letter-spacing: .04em; line-height: 1.4; }
+  #{{ uid }} .dml-trust__item::before { content: "✓ "; color: {{ s.color_check }}; }
+  #{{ uid }} .dml-trust__item::marker { content: none; }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "DML Trust bar",
+  "class": "dml-section",
+  "settings": [
+    { "type": "color", "id": "color_bg", "label": "Background", "default": "#1b2550" },
+    { "type": "color", "id": "color_text", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "color_check", "label": "Check mark", "default": "#c8a05a" },
+    { "type": "range", "id": "padding_y", "label": "Vertical padding", "min": 8, "max": 60, "step": 2, "unit": "px", "default": 22 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "100% Glyphosate Free" }]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "DML Trust bar",
+      "blocks": [
+        { "type": "item", "settings": { "text": "100% Glyphosate Free" } },
+        { "type": "item", "settings": { "text": "3rd-party Lab Tested" } },
+        { "type": "item", "settings": { "text": "GMP Certified" } },
+        { "type": "item", "settings": { "text": "ISO 22000 & HACCP" } },
+        { "type": "item", "settings": { "text": "100% Halal Certified" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
