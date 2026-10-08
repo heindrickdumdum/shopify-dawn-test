@@ -8,7 +8,8 @@
     "hero": {
       "type": "dml-hero",
       "settings": {
-        "product": "pure-collagen-repair-recovery"
+        "product": "pure-collagen-repair-recovery",
+        "image": "shopify://shop_images/dml-collagen-box.png"
       }
     },
     "trust": {
@@ -127,7 +128,8 @@
       "settings": {
         "fallback_image": "helps",
         "image_position": "left",
-        "heading": "Held to a higher standard"
+        "heading": "Held to a higher standard",
+        "image": "shopify://shop_images/dml-collagen-helps.png"
       }
     },
     "science": {
@@ -163,7 +165,8 @@
         "eyebrow": "The science",
         "heading": "Small peptides. Fast absorption.",
         "text": "<p>Hydrolysed collagen is broken into small peptides so it is absorbed quickly into the bloodstream, paired with turmeric extract for a dual-action formula.</p>",
-        "color_bg": "#f6f4ef"
+        "color_bg": "#f6f4ef",
+        "image": "shopify://shop_images/dml-collagen-science.jpg"
       }
     },
     "ingredients": {
@@ -177,7 +180,8 @@
         "eyebrow": "What's inside",
         "heading": "Two ingredients. Nothing to hide.",
         "text": "<p>Hydrolyzed bovine collagen peptides (grass-fed, pasture-raised) and turmeric. Each box has 30 single-serve sachets of 5.1g, one month of daily support.</p>",
-        "color_bg": "#f6f4ef"
+        "color_bg": "#f6f4ef",
+        "image": "shopify://shop_images/dml-collagen-ingredients.png"
       }
     },
     "stats": {
@@ -416,7 +420,9 @@
     },
     "final": {
       "type": "dml-final-cta",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/dml-collagen-sachets.png"
+      }
     }
   },
   "order": [
