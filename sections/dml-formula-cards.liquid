@@ -30,9 +30,9 @@
         -%}
         <li class="dml-formula__card" {{ block.shopify_attributes }}>
           {%- if b.image != blank -%}
-            <div class="dml-formula__media">{{ b.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 861px) 25vw, 90vw', loading: 'lazy', alt: card_alt }}</div>
+            <div class="dml-formula__media">{{ b.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 861px) 25vw, 90vw', loading: 'lazy', decoding: 'async', alt: card_alt }}</div>
           {%- elsif fallback != blank -%}
-            <div class="dml-formula__media"><img src="{{ fallback | asset_url }}" alt="{{ card_alt | escape }}" width="800" height="600" loading="lazy"></div>
+            <div class="dml-formula__media"><img src="{{ fallback | asset_url }}" alt="{{ card_alt | escape }}" width="800" height="600" loading="lazy" decoding="async"></div>
           {%- endif -%}
           <h3 class="dml-formula__card-title">{{ b.title }}</h3>
           <p class="dml-formula__card-text">{{ b.text }}</p>

@@ -7,9 +7,9 @@
 <div id="{{ uid }}" class="dml-final">
   <div class="dml-final__wrap">
     {%- if s.image != blank -%}
-      {{ s.image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '200px', loading: 'lazy', alt: image_alt }}
+      {{ s.image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '200px', loading: 'lazy', decoding: 'async', alt: image_alt }}
     {%- elsif s.use_bundled_image -%}
-      <img src="{{ 'dml-collagen-sachets.png' | asset_url }}" alt="{{ s.heading | escape }}" width="200" height="200" loading="lazy">
+      <img src="{{ 'dml-collagen-sachets.png' | asset_url }}" alt="{{ s.heading | escape }}" width="200" height="200" loading="lazy" decoding="async">
     {%- endif -%}
     <h2 class="dml-final__title">{{ s.heading }}</h2>
     {%- if s.text != blank -%}<p class="dml-final__text">{{ s.text }}</p>{%- endif -%}

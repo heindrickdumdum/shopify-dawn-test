@@ -54,7 +54,7 @@
 
     <div class="dml-hero__media">
       {%- if s.image != blank -%}
-        {{ s.image | image_url: width: 900 | image_tag: widths: '450, 600, 900', sizes: '(min-width: 861px) 45vw, 90vw', loading: 'eager', fetchpriority: 'high', alt: image_alt }}
+        {{ s.image | image_url: width: 900 | image_tag: widths: '360, 480, 560, 640, 750, 900', sizes: '(min-width: 861px) 45vw, min(90vw, 420px)', loading: 'eager', fetchpriority: 'high', alt: image_alt }}
       {%- else -%}
         <img src="{{ 'dml-collagen-box.png' | asset_url }}" alt="{{ s.heading | escape }}" width="900" height="900" loading="eager" fetchpriority="high">
       {%- endif -%}
