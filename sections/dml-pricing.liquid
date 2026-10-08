@@ -30,7 +30,7 @@
           if compare_cents < variant.price
             assign compare_cents = variant.price
           endif
-          assign plan_id = alloc.selling_plan_id
+          assign plan_id = alloc.selling_plan.id
           assign auto_name = alloc.selling_plan.name
         endif
       endif
@@ -59,17 +59,24 @@
       assign save_text = s.save_label | replace: '{percent}', save_pct
     endif
 
-    assign is_default = false
-    if b.is_default or first_plan
-      assign default_total = price_text
-      assign default_label = plan_name
+    assign hidden = false
+    if product.requires_selling_plan and b.plan == 'one_time'
+      assign hidden = true
     endif
-    if b.is_default
-      assign is_default = true
-    endif
-    assign first_plan = false
 
-    assign row = block.id | append: '~' | append: plan_name | append: '~' | append: plan_id | append: '~' | append: price_text | append: '~' | append: per_day_text | append: '~' | append: save_text | append: '~' | append: is_default
+    assign is_default = false
+    unless hidden
+      if b.is_default or first_plan
+        assign default_total = price_text
+        assign default_label = plan_name
+      endif
+      if b.is_default
+        assign is_default = true
+      endif
+      assign first_plan = false
+    endunless
+
+    assign row = block.id | append: '~' | append: plan_name | append: '~' | append: plan_id | append: '~' | append: price_text | append: '~' | append: per_day_text | append: '~' | append: save_text | append: '~' | append: is_default | append: '~' | append: hidden
     assign rows = rows | append: row | append: '^^'
   endfor
   assign rows_list = rows | split: '^^'
@@ -89,6 +96,7 @@
           {%- for block in section.blocks -%}
             {%- assign b = block.settings -%}
             {%- assign f = rows_list[forloop.index0] | split: '~' -%}
+            {%- if f[7] == 'true' -%}{%- continue -%}{%- endif -%}
             <label class="dml-plan" {{ block.shopify_attributes }}>
               <input
                 class="dml-plan__input"
@@ -163,6 +171,7 @@
             <select data-dml-sticky-select>
               {%- for block in section.blocks -%}
                 {%- assign f = rows_list[forloop.index0] | split: '~' -%}
+                {%- if f[7] == 'true' -%}{%- continue -%}{%- endif -%}
                 <option value="{{ block.id }}" {% if f[6] == 'true' %}selected{% endif %}>{{ f[1] }} · {{ f[3] }}</option>
               {%- endfor -%}
             </select>
