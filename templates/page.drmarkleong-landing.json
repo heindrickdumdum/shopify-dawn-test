@@ -595,7 +595,7 @@
         "text": "Join the membership and get the lowest price per box, free delivery and pause-anytime flexibility.",
         "cta_label": "Start your membership today",
         "cta_link": "#pricing",
-        "disclaimer": "These statements have not been evaluated by a health authority. This product is not intended to diagnose, treat, cure or prevent any disease. Consult a healthcare professional before use.",
+        "disclaimer": "",
         "color_bg": "#202f5a",
         "color_bg_2": "#2c3e73",
         "color_accent": "#e96046",
@@ -604,9 +604,62 @@
         "padding_top": 72,
         "padding_bottom": 32
       }
+    },
+    "header": {
+      "type": "dml-header",
+      "settings": {}
+    },
+    "footer": {
+      "type": "dml-footer",
+      "blocks": {
+        "l1": {
+          "type": "link",
+          "settings": {
+            "label": "Privacy Policy",
+            "url": "/policies/privacy-policy"
+          }
+        },
+        "l2": {
+          "type": "link",
+          "settings": {
+            "label": "Terms of Service",
+            "url": "/policies/terms-of-service"
+          }
+        },
+        "l3": {
+          "type": "link",
+          "settings": {
+            "label": "Shipping Policy",
+            "url": "/policies/shipping-policy"
+          }
+        },
+        "l4": {
+          "type": "link",
+          "settings": {
+            "label": "Refund Policy",
+            "url": "/policies/refund-policy"
+          }
+        },
+        "l5": {
+          "type": "link",
+          "settings": {
+            "label": "Contact",
+            "url": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4",
+        "l5"
+      ],
+      "settings": {}
     }
   },
   "order": [
+    "header",
     "hero",
     "trust",
     "benefits",
@@ -619,6 +672,7 @@
     "compare",
     "steps",
     "faq",
-    "final"
+    "final",
+    "footer"
   ]
 }

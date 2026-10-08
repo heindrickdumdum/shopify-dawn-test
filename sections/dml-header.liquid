@@ -1,0 +1,71 @@
+{%- liquid
+  assign uid = 'dml-header-' | append: section.id
+  assign s = section.settings
+  assign home_url = s.logo_url | default: routes.root_url
+  assign cta_url = s.cta_url | default: routes.all_products_collection_url
+  assign logo_alt = s.logo.alt | default: shop.name
+-%}
+
+<header id="{{ uid }}" class="dml-header">
+  <div class="dml-header__inner">
+    <a class="dml-header__logo" href="{{ home_url }}">
+      {%- if s.logo != blank -%}
+        {{ s.logo | image_url: width: 600 | image_tag: widths: '150, 300, 450, 600', sizes: '(min-width: 600px) 300px, 150px', loading: 'eager', alt: logo_alt }}
+      {%- else -%}
+        <img src="{{ 'dml-logo.png' | asset_url }}" alt="{{ logo_alt | escape }}" width="600" height="184" loading="eager">
+      {%- endif -%}
+    </a>
+    {%- if s.show_cta and s.cta_label != blank -%}
+      <a class="dml-header__cta" href="{{ cta_url }}">{{ s.cta_label }}</a>
+    {%- endif -%}
+  </div>
+</header>
+
+{%- style -%}
+  {%- if s.sticky -%}
+    #shopify-section-{{ section.id }} { position: sticky; top: 0; z-index: 60; }
+  {%- endif -%}
+  #{{ uid }}, #{{ uid }} *, #{{ uid }} *::before, #{{ uid }} *::after { box-sizing: border-box; }
+  #{{ uid }} :is(a, img) { margin: 0; padding: 0; }
+  #{{ uid }} {
+    background: {{ s.color_bg }};
+    border-bottom: 1px solid {{ s.color_border }};
+    font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  #{{ uid }} .dml-header__inner { max-width: 1120px; margin: 0 auto; padding: {{ s.padding_y }}px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  #{{ uid }} .dml-header__logo { display: block; flex: none; line-height: 0; }
+  #{{ uid }} .dml-header__logo img { display: block; width: {{ s.logo_width }}px; max-width: 100%; height: auto; }
+  #{{ uid }} .dml-header__cta { flex: none; display: inline-block; background: {{ s.color_accent }}; color: #fff; font: 700 14px/1.2 'Montserrat', system-ui, sans-serif; padding: 12px 22px; border-radius: 999px; text-decoration: none; white-space: nowrap; }
+  #{{ uid }} .dml-header__cta:hover { filter: brightness(1.08); }
+  #{{ uid }} .dml-header__cta:focus-visible, #{{ uid }} .dml-header__logo:focus-visible { outline: 3px solid {{ s.color_primary }}; outline-offset: 3px; }
+
+  @media (max-width: 520px) {
+    #{{ uid }} .dml-header__logo img { width: {{ s.logo_width | times: 0.75 | round }}px; }
+    #{{ uid }} .dml-header__cta { padding: 10px 16px; font-size: 13px; }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "DML Header",
+  "class": "dml-section",
+  "settings": [
+    { "type": "header", "content": "Logo" },
+    { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Falls back to the bundled Dr. Mark Leong logo." },
+    { "type": "range", "id": "logo_width", "label": "Logo width", "min": 80, "max": 280, "step": 5, "unit": "px", "default": 150 },
+    { "type": "url", "id": "logo_url", "label": "Logo link", "info": "Leave blank to link to the store home page." },
+    { "type": "header", "content": "Button" },
+    { "type": "checkbox", "id": "show_cta", "label": "Show button", "default": true },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Shop all products" },
+    { "type": "url", "id": "cta_url", "label": "Button link", "info": "Leave blank to link to the store's all products page." },
+    { "type": "header", "content": "Style" },
+    { "type": "checkbox", "id": "sticky", "label": "Keep header visible while scrolling", "default": true },
+    { "type": "color", "id": "color_bg", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "color_border", "label": "Bottom border", "default": "#e7e3da" },
+    { "type": "color", "id": "color_primary", "label": "Primary (focus outline)", "default": "#202f5a" },
+    { "type": "color", "id": "color_accent", "label": "Button", "default": "#bf4a30", "info": "A darker shade keeps the small white button text readable (WCAG AA)." },
+    { "type": "range", "id": "padding_y", "label": "Vertical padding", "min": 6, "max": 32, "step": 2, "unit": "px", "default": 14 }
+  ],
+  "presets": [{ "name": "DML Header" }]
+}
+{% endschema %}

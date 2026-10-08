@@ -40,14 +40,15 @@
     {{ content_for_header }}
 
     <style>
-      html { scroll-behavior: smooth; }
+      html { scroll-behavior: smooth; scroll-padding-top: 76px; }
       body { margin: 0; background: #fff; }
     </style>
   </head>
 
   <body>
     {%- comment -%}
-      Landing layout: no header, footer or announcement bar.
+      Landing layout: no store header, footer or announcement bar. The page template adds
+      its own slim header and footer as sections (dml-header, dml-footer).
       Every landing section carries its own scoped CSS, so no theme stylesheet is loaded.
     {%- endcomment -%}
     <main id="MainContent" role="main">

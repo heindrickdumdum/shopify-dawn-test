@@ -27,7 +27,7 @@
     --c-accent: {{ s.color_accent }};
     background: linear-gradient(135deg, {{ s.color_bg }}, {{ s.color_bg_2 }});
     color: #fff;
-    padding: {{ s.padding_top }}px 20px {{ s.padding_bottom | plus: 72 }}px;
+    padding: {{ s.padding_top }}px 20px {{ s.padding_bottom }}px;
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.6;
@@ -42,7 +42,7 @@
   #{{ uid }} .dml-final__disclaimer { max-width: 760px; margin: 48px auto 0; font-size: 12px; color: {{ s.color_disclaimer }}; }
 
   @media (max-width: 860px) {
-    #{{ uid }} { padding-top: {{ s.padding_top | times: 0.75 | round }}px; padding-bottom: {{ s.padding_bottom | times: 0.75 | round | plus: 72 }}px; }
+    #{{ uid }} { padding-top: {{ s.padding_top | times: 0.75 | round }}px; padding-bottom: {{ s.padding_bottom | times: 0.75 | round }}px; }
     #{{ uid }} .dml-final__btn { display: block; }
   }
 {%- endstyle -%}
