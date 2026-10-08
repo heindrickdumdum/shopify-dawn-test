@@ -165,7 +165,7 @@
         "c1": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/dml-formula-dose.jpg",
+            "image": "shopify://shop_images/dml-formula-dose-opt.webp",
             "fallback": "dose",
             "title": "Clinically effective dose",
             "text": "Each sachet delivers 5,000mg of collagen, a concentrated daily dose to support joints, cartilage and connective tissue."
