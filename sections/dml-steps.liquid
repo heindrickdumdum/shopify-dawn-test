@@ -26,6 +26,7 @@
   #{{ uid }} {
     --c-primary: {{ s.color_primary }};
     --c-accent: {{ s.color_accent }};
+    --c-accent-text: {{ s.color_accent_text }};
     --c-gold: {{ s.color_gold }};
     background: {{ s.color_bg }};
     padding: {{ s.padding_top }}px 20px {{ s.padding_bottom }}px;
@@ -36,7 +37,7 @@
   }
   #{{ uid }} .dml-steps__wrap { max-width: 1120px; margin: 0 auto; }
   #{{ uid }} .dml-steps__head { text-align: center; }
-  #{{ uid }} .dml-steps__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+  #{{ uid }} .dml-steps__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent-text); margin-bottom: 10px; }
   #{{ uid }} .dml-steps__title { font: 800 clamp(26px, 4vw, 38px)/1.15 'Montserrat', sans-serif; color: var(--c-primary); }
   #{{ uid }} .dml-steps__list { list-style: none; counter-reset: dml-step; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; margin-top: 40px; }
   #{{ uid }} .dml-steps__item { counter-increment: dml-step; text-align: center; padding: 0 10px; }
@@ -70,13 +71,20 @@
       "type": "color",
       "id": "color_primary",
       "label": "Primary",
-      "default": "#1b2550"
+      "default": "#202f5a"
     },
     {
       "type": "color",
       "id": "color_accent",
       "label": "Accent",
-      "default": "#c2410c"
+      "default": "#e96046"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_text",
+      "label": "Accent for small text",
+      "default": "#bf4a30",
+      "info": "Darker shade of the accent used for small text so it stays readable (WCAG AA)."
     },
     {
       "type": "color",

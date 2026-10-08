@@ -44,6 +44,7 @@
   #{{ uid }} {
     --c-primary: {{ s.color_primary }};
     --c-accent: {{ s.color_accent }};
+    --c-accent-text: {{ s.color_accent_text }};
     background: {{ s.color_bg }};
     padding: {{ s.padding_top }}px 20px {{ s.padding_bottom }}px;
     font-family: 'Inter', system-ui, sans-serif;
@@ -53,7 +54,7 @@
   }
   #{{ uid }} .dml-faq__wrap { max-width: 760px; margin: 0 auto; }
   #{{ uid }} .dml-faq__head { text-align: center; margin-bottom: 36px; }
-  #{{ uid }} .dml-faq__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+  #{{ uid }} .dml-faq__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent-text); margin-bottom: 10px; }
   #{{ uid }} .dml-faq__title { font: 800 clamp(26px, 4vw, 38px)/1.15 'Montserrat', sans-serif; color: var(--c-primary); }
   #{{ uid }} .dml-faq__item { border-bottom: 1px solid {{ s.color_border }}; padding: 18px 0; }
   #{{ uid }} .dml-faq__q { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; font: 600 16px/1.4 'Montserrat', sans-serif; color: var(--c-primary); }
@@ -90,13 +91,20 @@
       "type": "color",
       "id": "color_primary",
       "label": "Primary",
-      "default": "#1b2550"
+      "default": "#202f5a"
     },
     {
       "type": "color",
       "id": "color_accent",
       "label": "Accent",
-      "default": "#c2410c"
+      "default": "#e96046"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_text",
+      "label": "Accent for small text",
+      "default": "#bf4a30",
+      "info": "Darker shade of the accent used for small text so it stays readable (WCAG AA)."
     },
     {
       "type": "color",

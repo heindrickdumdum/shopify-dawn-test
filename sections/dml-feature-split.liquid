@@ -45,6 +45,7 @@
   #{{ uid }} {
     --c-primary: {{ s.color_primary }};
     --c-accent: {{ s.color_accent }};
+    --c-accent-text: {{ s.color_accent_text }};
     background: {{ s.color_bg }};
     padding: {{ s.padding_top }}px 20px {{ s.padding_bottom }}px;
     font-family: 'Inter', system-ui, sans-serif;
@@ -55,7 +56,7 @@
   #{{ uid }} .dml-split__wrap { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
   #{{ uid }}.dml-split--right .dml-split__media { order: 2; }
   #{{ uid }} .dml-split__media img { display: block; width: 100%; height: auto; border-radius: 20px; }
-  #{{ uid }} .dml-split__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+  #{{ uid }} .dml-split__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent-text); margin-bottom: 10px; }
   #{{ uid }} .dml-split__title { font: 800 clamp(24px, 3.6vw, 34px)/1.15 'Montserrat', sans-serif; color: var(--c-primary); margin-bottom: 14px; }
   #{{ uid }} .dml-split__text p + p { margin-top: 10px; }
   #{{ uid }} .dml-split__checks { list-style: none; margin-top: 18px; display: grid; gap: 12px; }
@@ -144,13 +145,20 @@
       "type": "color",
       "id": "color_primary",
       "label": "Primary",
-      "default": "#1b2550"
+      "default": "#202f5a"
     },
     {
       "type": "color",
       "id": "color_accent",
       "label": "Accent",
-      "default": "#c2410c"
+      "default": "#e96046"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_text",
+      "label": "Accent for small text",
+      "default": "#bf4a30",
+      "info": "Darker shade of the accent used for small text so it stays readable (WCAG AA)."
     },
     {
       "type": "color",

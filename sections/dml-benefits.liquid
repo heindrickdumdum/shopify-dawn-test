@@ -28,6 +28,7 @@
   #{{ uid }} {
     --c-primary: {{ s.color_primary }};
     --c-accent: {{ s.color_accent }};
+    --c-accent-text: {{ s.color_accent_text }};
     background: {{ s.color_bg }};
     padding: {{ s.padding_top }}px 20px {{ s.padding_bottom }}px;
     font-family: 'Inter', system-ui, sans-serif;
@@ -37,7 +38,7 @@
   }
   #{{ uid }} .dml-benefits__wrap { max-width: 1120px; margin: 0 auto; }
   #{{ uid }} .dml-benefits__head { text-align: center; }
-  #{{ uid }} .dml-benefits__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+  #{{ uid }} .dml-benefits__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent-text); margin-bottom: 10px; }
   #{{ uid }} .dml-benefits__title { font: 800 clamp(26px, 4vw, 38px)/1.15 'Montserrat', sans-serif; color: var(--c-primary); margin-bottom: 14px; }
   #{{ uid }} .dml-benefits__lead { max-width: 620px; margin: 0 auto; }
   #{{ uid }} .dml-benefits__grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
@@ -79,13 +80,20 @@
       "type": "color",
       "id": "color_primary",
       "label": "Primary",
-      "default": "#1b2550"
+      "default": "#202f5a"
     },
     {
       "type": "color",
       "id": "color_accent",
       "label": "Accent",
-      "default": "#c2410c"
+      "default": "#e96046"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_text",
+      "label": "Accent for small text",
+      "default": "#bf4a30",
+      "info": "Darker shade of the accent used for small text so it stays readable (WCAG AA)."
     },
     {
       "type": "color",
