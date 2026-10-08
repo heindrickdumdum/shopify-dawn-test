@@ -159,6 +159,67 @@
         "padding_bottom": 24
       }
     },
+    "formula": {
+      "type": "dml-formula-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/dml-formula-dose.jpg",
+            "fallback": "dose",
+            "title": "Clinically effective dose",
+            "text": "Each sachet delivers 5,000mg of collagen, a concentrated daily dose to support joints, cartilage and connective tissue."
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/dml-formula-dual.jpg",
+            "fallback": "dual",
+            "title": "Dual-action formula",
+            "text": "Collagen supports structural tissue while turmeric extract supports a healthy inflammatory response. Two actives working together."
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/dml-formula-pure.jpg",
+            "fallback": "pure",
+            "title": "Clean, pure ingredients",
+            "text": "No chemical fillers, artificial additives or unnecessary ingredients. Just collagen peptides and turmeric."
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/dml-collagen-science.jpg",
+            "fallback": "peptide",
+            "title": "Hydrolysed peptide delivery",
+            "text": "Collagen is broken down into small hydrolysed peptides, so it is easier to digest and is absorbed quickly into the bloodstream."
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "eyebrow": "The science",
+        "heading": "Why this formula works",
+        "lead": "",
+        "color_primary": "#202f5a",
+        "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
+        "color_text": "#5b5b66",
+        "color_bg": "#f6f4ef",
+        "color_card": "#ffffff",
+        "color_border": "#e7e3da",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
     "standards": {
       "type": "dml-feature-split",
       "blocks": {
@@ -650,54 +711,6 @@
         "padding_top": 48,
         "padding_bottom": 24
       }
-    },
-    "formula": {
-      "type": "dml-formula-cards",
-      "blocks": {
-        "c1": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/dml-formula-dose.jpg",
-            "fallback": "dose",
-            "title": "Clinically effective dose",
-            "text": "Each sachet delivers 5,000mg of collagen, a concentrated daily dose to support joints, cartilage and connective tissue."
-          }
-        },
-        "c2": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/dml-formula-dual.jpg",
-            "fallback": "dual",
-            "title": "Dual-action formula",
-            "text": "Collagen supports structural tissue while turmeric extract supports a healthy inflammatory response. Two actives working together."
-          }
-        },
-        "c3": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/dml-formula-pure.jpg",
-            "fallback": "pure",
-            "title": "Clean, pure ingredients",
-            "text": "No chemical fillers, artificial additives or unnecessary ingredients. Just collagen peptides and turmeric."
-          }
-        },
-        "c4": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/dml-collagen-science.jpg",
-            "fallback": "peptide",
-            "title": "Hydrolysed peptide delivery",
-            "text": "Collagen is broken down into small hydrolysed peptides, so it is easier to digest and is absorbed quickly into the bloodstream."
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3",
-        "c4"
-      ],
-      "settings": {}
     }
   },
   "order": [
