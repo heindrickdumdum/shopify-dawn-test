@@ -5,14 +5,74 @@
   assign variant = product.selected_or_first_available_variant
   assign anchor = s.anchor_id | default: 'pricing'
   assign form_id = uid | append: '-form'
+  assign days = s.days_per_box | default: 30
+  assign rows = ''
   assign default_total = ''
   assign default_label = ''
+  assign first_plan = true
+
   for block in section.blocks
-    if block.settings.is_default or default_label == ''
-      assign default_total = block.settings.total
-      assign default_label = block.settings.name
+    assign b = block.settings
+    assign price_cents = 0
+    assign compare_cents = 0
+    assign plan_id = ''
+    assign auto_name = 'One-time purchase'
+
+    if product != blank
+      assign price_cents = variant.price
+      assign compare_cents = variant.price
+      if b.plan != 'one_time'
+        assign alloc_index = b.plan | minus: 1
+        assign alloc = variant.selling_plan_allocations[alloc_index]
+        if alloc != blank
+          assign price_cents = alloc.per_delivery_price
+          assign compare_cents = alloc.compare_at_price
+          if compare_cents < variant.price
+            assign compare_cents = variant.price
+          endif
+          assign plan_id = alloc.selling_plan_id
+          assign auto_name = alloc.selling_plan.name
+        endif
+      endif
     endif
+
+    assign plan_name = b.name | default: auto_name
+    assign save_pct = 0
+    if compare_cents > price_cents
+      assign diff = compare_cents | minus: price_cents
+      assign save_pct = diff | times: 100.0 | divided_by: compare_cents | round
+    endif
+
+    assign price_text = '—'
+    assign per_day_text = ''
+    if product != blank
+      assign price_text = price_cents | money
+      if s.show_per_day
+        assign per_day_cents = price_cents | divided_by: days | round
+        assign per_day_amount = per_day_cents | money
+        assign per_day_text = s.per_day_label | replace: '{amount}', per_day_amount
+      endif
+    endif
+
+    assign save_text = ''
+    if save_pct > 0
+      assign save_text = s.save_label | replace: '{percent}', save_pct
+    endif
+
+    assign is_default = false
+    if b.is_default or first_plan
+      assign default_total = price_text
+      assign default_label = plan_name
+    endif
+    if b.is_default
+      assign is_default = true
+    endif
+    assign first_plan = false
+
+    assign row = block.id | append: '~' | append: plan_name | append: '~' | append: plan_id | append: '~' | append: price_text | append: '~' | append: per_day_text | append: '~' | append: save_text | append: '~' | append: is_default
+    assign rows = rows | append: row | append: '^^'
   endfor
+  assign rows_list = rows | split: '^^'
 -%}
 
 <div id="{{ anchor }}" class="dml-pricing-anchor"></div>
@@ -28,23 +88,24 @@
         <div class="dml-pricing__plans" role="radiogroup" aria-label="{{ s.heading | escape }}">
           {%- for block in section.blocks -%}
             {%- assign b = block.settings -%}
+            {%- assign f = rows_list[forloop.index0] | split: '~' -%}
             <label class="dml-plan" {{ block.shopify_attributes }}>
               <input
                 class="dml-plan__input"
                 type="radio"
                 name="selling_plan"
-                value="{{ b.selling_plan_id }}"
-                data-name="{{ b.name | escape }}"
+                value="{{ f[2] }}"
+                data-name="{{ f[1] | escape }}"
                 data-plan-id="{{ block.id }}"
-                data-total="{{ b.total | escape }}"
-                {% if b.is_default %}checked{% endif %}
+                data-total="{{ f[3] | escape }}"
+                {% if f[6] == 'true' %}checked{% endif %}
               >
               <span class="dml-plan__card">
                 {%- if b.tag != blank -%}<span class="dml-plan__tag dml-plan__tag--{{ b.tag_style }}">{{ b.tag }}</span>{%- endif -%}
-                <span class="dml-plan__name">{{ b.name }}</span>
-                <span class="dml-plan__price">{{ b.price }} <small>{{ b.unit }}</small></span>
-                {%- if b.per_day != blank -%}<span class="dml-plan__perday">{{ b.per_day }}</span>{%- endif -%}
-                {%- if b.savings != blank -%}<span class="dml-plan__save">{{ b.savings }}</span>{%- else -%}<span class="dml-plan__save dml-plan__save--empty"></span>{%- endif -%}
+                <span class="dml-plan__name">{{ f[1] }}</span>
+                <span class="dml-plan__price">{{ f[3] }} <small>{{ s.unit_label }}</small></span>
+                {%- if f[4] != blank -%}<span class="dml-plan__perday">{{ f[4] }}</span>{%- endif -%}
+                {%- if f[5] != blank -%}<span class="dml-plan__save">{{ f[5] }}</span>{%- else -%}<span class="dml-plan__save dml-plan__save--empty"></span>{%- endif -%}
                 {%- if b.perks != blank -%}
                   <span class="dml-plan__perks">
                     {%- assign perks = b.perks | newline_to_br | split: '<br />' -%}
@@ -101,7 +162,8 @@
             <span class="dml-sticky__sr">{{ s.heading }}</span>
             <select data-dml-sticky-select>
               {%- for block in section.blocks -%}
-                <option value="{{ block.id }}" {% if block.settings.is_default %}selected{% endif %}>{{ block.settings.name }} · {{ block.settings.total }}</option>
+                {%- assign f = rows_list[forloop.index0] | split: '~' -%}
+                <option value="{{ block.id }}" {% if f[6] == 'true' %}selected{% endif %}>{{ f[1] }} · {{ f[3] }}</option>
               {%- endfor -%}
             </select>
           </label>
@@ -255,48 +317,239 @@
   "name": "DML Pricing & plans",
   "class": "dml-section",
   "settings": [
-    { "type": "product", "id": "product", "label": "Product", "info": "Required for add to cart. Plans below map to the product's selling plans." },
-    { "type": "text", "id": "anchor_id", "label": "Anchor ID", "default": "pricing", "info": "Target for #pricing links." },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Pricing" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose how you want to save" },
-    { "type": "textarea", "id": "lead", "label": "Intro", "default": "Join the membership for the lowest price per box, free delivery and points towards gifts." },
-    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Add to cart" },
-    { "type": "text", "id": "cta_note", "label": "Note under button", "default": "Secure checkout · Cancel or pause anytime" },
     {
-      "type": "select", "id": "after_add", "label": "After adding to cart",
-      "options": [{ "value": "cart", "label": "Go to cart" }, { "value": "checkout", "label": "Go to checkout" }],
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Required for add to cart. Plans below map to the product's selling plans."
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "default": "pricing",
+      "info": "Target for #pricing links."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Pricing"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choose how you want to save"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Intro",
+      "default": "Join the membership for the lowest price per box, free delivery and points towards gifts."
+    },
+    {
+      "type": "text",
+      "id": "unit_label",
+      "label": "Unit label after price",
+      "default": "/ box"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_per_day",
+      "label": "Show cost per day",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "days_per_box",
+      "label": "Days one box lasts",
+      "min": 1,
+      "max": 90,
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "text",
+      "id": "per_day_label",
+      "label": "Cost-per-day text",
+      "default": "≈ {amount} / day",
+      "info": "{amount} is replaced with the price, in the store's currency format."
+    },
+    {
+      "type": "text",
+      "id": "save_label",
+      "label": "Savings text",
+      "default": "Save {percent}% vs one-time",
+      "info": "{percent} is replaced with the discount from the subscription plan."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "cta_note",
+      "label": "Note under button",
+      "default": "Secure checkout · Cancel or pause anytime"
+    },
+    {
+      "type": "select",
+      "id": "after_add",
+      "label": "After adding to cart",
+      "options": [
+        {
+          "value": "cart",
+          "label": "Go to cart"
+        },
+        {
+          "value": "checkout",
+          "label": "Go to checkout"
+        }
+      ],
       "default": "cart"
     },
-    { "type": "textarea", "id": "guarantee_items", "label": "Assurance line (one per line)", "default": "Secure checkout\nCancel or pause anytime\nFree delivery on memberships" },
-    { "type": "checkbox", "id": "show_sticky", "label": "Show floating add-to-cart bar", "default": true },
-    { "type": "range", "id": "sticky_offset", "label": "Show after scrolling", "min": 200, "max": 1500, "step": 50, "unit": "px", "default": 600 },
-    { "type": "text", "id": "sticky_label", "label": "Button label (when no product is set)", "default": "Choose plan" },
-    { "type": "color", "id": "color_primary", "label": "Primary", "default": "#1b2550" },
-    { "type": "color", "id": "color_accent", "label": "Button / accent", "default": "#f86239" },
-    { "type": "color", "id": "color_bg", "label": "Background", "default": "#ffffff" },
-    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 72 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 72 }
+    {
+      "type": "textarea",
+      "id": "guarantee_items",
+      "label": "Assurance line (one per line)",
+      "default": "Secure checkout\nCancel or pause anytime\nFree delivery on memberships"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sticky",
+      "label": "Show floating add-to-cart bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "sticky_offset",
+      "label": "Show after scrolling",
+      "min": 200,
+      "max": 1500,
+      "step": 50,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "text",
+      "id": "sticky_label",
+      "label": "Button label (when no product is set)",
+      "default": "Choose plan"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary",
+      "default": "#1b2550"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Button / accent",
+      "default": "#f86239"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
   ],
   "blocks": [
     {
       "type": "plan",
       "name": "Plan",
       "settings": [
-        { "type": "text", "id": "name", "label": "Plan name", "default": "One-time purchase" },
-        { "type": "text", "id": "tag", "label": "Tag (optional)" },
         {
-          "type": "select", "id": "tag_style", "label": "Tag style",
-          "options": [{ "value": "primary", "label": "Primary" }, { "value": "accent", "label": "Accent" }],
+          "type": "select",
+          "id": "plan",
+          "label": "Plan",
+          "options": [
+            {
+              "value": "one_time",
+              "label": "One-time purchase"
+            },
+            {
+              "value": "1",
+              "label": "Subscription plan 1"
+            },
+            {
+              "value": "2",
+              "label": "Subscription plan 2"
+            },
+            {
+              "value": "3",
+              "label": "Subscription plan 3"
+            },
+            {
+              "value": "4",
+              "label": "Subscription plan 4"
+            }
+          ],
+          "default": "one_time",
+          "info": "Subscription plans are the product's selling plans, in the order Shopify lists them. Price and savings are read from them."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Plan name (optional)",
+          "info": "Leave blank to use the name from Shopify."
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag (optional)"
+        },
+        {
+          "type": "select",
+          "id": "tag_style",
+          "label": "Tag style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "accent",
+              "label": "Accent"
+            }
+          ],
           "default": "primary"
         },
-        { "type": "text", "id": "price", "label": "Price per unit", "default": "S$188" },
-        { "type": "text", "id": "unit", "label": "Unit", "default": "/ box" },
-        { "type": "text", "id": "per_day", "label": "Cost per day (optional)" },
-        { "type": "text", "id": "savings", "label": "Savings text" },
-        { "type": "text", "id": "total", "label": "Total (shown on button)", "default": "S$188" },
-        { "type": "textarea", "id": "perks", "label": "Perks (one per line)" },
-        { "type": "text", "id": "selling_plan_id", "label": "Selling plan ID", "info": "Leave blank for a one-time purchase. Otherwise paste the numeric selling plan ID from the product." },
-        { "type": "checkbox", "id": "is_default", "label": "Pre-selected", "default": false }
+        {
+          "type": "textarea",
+          "id": "perks",
+          "label": "Perks (one per line)"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_default",
+          "label": "Pre-selected",
+          "default": false
+        }
       ]
     }
   ],
@@ -305,9 +558,33 @@
     {
       "name": "DML Pricing & plans",
       "blocks": [
-        { "type": "plan", "settings": { "name": "One-time purchase", "per_day": "≈ S$6.27 / day", "price": "S$188", "unit": "/ box", "total": "S$188", "perks": "1 box · 30 sachets\nStandard delivery" } },
-        { "type": "plan", "settings": { "name": "Quarterly plan · 3 boxes", "tag": "Most popular", "price": "S$97", "unit": "/ box", "per_day": "≈ S$3.23 / day", "savings": "Save S$273 · S$291 total", "total": "S$291", "perks": "Free delivery\nFree membership upgrade\nCancel or pause anytime", "is_default": true } },
-        { "type": "plan", "settings": { "name": "Annual plan · 12 boxes", "tag": "Best value", "tag_style": "accent", "price": "S$92", "unit": "/ box", "per_day": "≈ S$3.06 / day", "savings": "Save S$1,156 · S$1,100 total", "total": "S$1,100", "perks": "Free delivery\nFree membership upgrade\nPoints for gift redemption" } }
+        {
+          "type": "plan",
+          "settings": {
+            "plan": "one_time",
+            "perks": "1 box · 30 sachets\nStandard delivery"
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "plan": "1",
+            "name": "Quarterly plan",
+            "tag": "Most popular",
+            "perks": "Free delivery\nFree membership upgrade\nCancel or pause anytime",
+            "is_default": true
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "plan": "2",
+            "name": "Annual plan",
+            "tag": "Best value",
+            "tag_style": "accent",
+            "perks": "Free delivery\nFree membership upgrade\nPoints for gift redemption"
+          }
+        }
       ]
     }
   ]

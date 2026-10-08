@@ -7,38 +7,123 @@
   "sections": {
     "hero": {
       "type": "dml-hero",
-      "settings": {}
+      "settings": {
+        "product": "pure-collagen-repair-recovery"
+      }
     },
     "trust": {
       "type": "dml-trust-bar",
       "blocks": {
-        "t1": { "type": "item", "settings": { "text": "100% Glyphosate Free" } },
-        "t2": { "type": "item", "settings": { "text": "3rd-party Lab Tested" } },
-        "t3": { "type": "item", "settings": { "text": "GMP Certified" } },
-        "t4": { "type": "item", "settings": { "text": "ISO 22000 & HACCP" } },
-        "t5": { "type": "item", "settings": { "text": "100% Halal Certified" } }
+        "t1": {
+          "type": "item",
+          "settings": {
+            "text": "100% Glyphosate Free"
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "text": "3rd-party Lab Tested"
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "text": "GMP Certified"
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "text": "ISO 22000 & HACCP"
+          }
+        },
+        "t5": {
+          "type": "item",
+          "settings": {
+            "text": "100% Halal Certified"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5"]
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ]
     },
     "benefits": {
       "type": "dml-benefits",
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "icon": "🦴", "title": "Repair & support joints", "text": "Promotes joint health and supports cartilage, connective tissues and bones." } },
-        "b2": { "type": "benefit", "settings": { "icon": "💪", "title": "Faster muscle recovery", "text": "Supports muscle recovery and tissue repair after training and busy days." } },
-        "b3": { "type": "benefit", "settings": { "icon": "🏃", "title": "Flexibility & mobility", "text": "Helps protect cartilage from wear and tear for easier daily movement." } }
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🦴",
+            "title": "Repair & support joints",
+            "text": "Promotes joint health and supports cartilage, connective tissues and bones."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "💪",
+            "title": "Faster muscle recovery",
+            "text": "Supports muscle recovery and tissue repair after training and busy days."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🏃",
+            "title": "Flexibility & mobility",
+            "text": "Helps protect cartilage from wear and tear for easier daily movement."
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3"],
-      "settings": { "padding_bottom": 24 }
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "padding_bottom": 24
+      }
     },
     "standards": {
       "type": "dml-feature-split",
       "blocks": {
-        "c1": { "type": "check", "settings": { "text": "Grass-fed, pasture-raised bovine collagen peptides" } },
-        "c2": { "type": "check", "settings": { "text": "Zero fillers, sugar or additives" } },
-        "c3": { "type": "check", "settings": { "text": "Non-GMO, hormone-free, antibiotic-free" } },
-        "c4": { "type": "check", "settings": { "text": "Small-batch production under strict quality control" } }
+        "c1": {
+          "type": "check",
+          "settings": {
+            "text": "Grass-fed, pasture-raised bovine collagen peptides"
+          }
+        },
+        "c2": {
+          "type": "check",
+          "settings": {
+            "text": "Zero fillers, sugar or additives"
+          }
+        },
+        "c3": {
+          "type": "check",
+          "settings": {
+            "text": "Non-GMO, hormone-free, antibiotic-free"
+          }
+        },
+        "c4": {
+          "type": "check",
+          "settings": {
+            "text": "Small-batch production under strict quality control"
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
       "settings": {
         "fallback_image": "helps",
         "image_position": "left",
@@ -48,11 +133,30 @@
     "science": {
       "type": "dml-feature-split",
       "blocks": {
-        "c1": { "type": "check", "settings": { "text": "5,000mg hydrolysed bovine collagen per sachet" } },
-        "c2": { "type": "check", "settings": { "text": "100mg turmeric (Curcuma longa) extract" } },
-        "c3": { "type": "check", "settings": { "text": "Only 18 calories and 0g sugar per sachet" } }
+        "c1": {
+          "type": "check",
+          "settings": {
+            "text": "5,000mg hydrolysed bovine collagen per sachet"
+          }
+        },
+        "c2": {
+          "type": "check",
+          "settings": {
+            "text": "100mg turmeric (Curcuma longa) extract"
+          }
+        },
+        "c3": {
+          "type": "check",
+          "settings": {
+            "text": "Only 18 calories and 0g sugar per sachet"
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
       "settings": {
         "fallback_image": "science",
         "image_position": "right",
@@ -79,67 +183,235 @@
     "stats": {
       "type": "dml-stats",
       "blocks": {
-        "s1": { "type": "stat", "settings": { "value": "4.5★", "label": "Average rating" } },
-        "s2": { "type": "stat", "settings": { "value": "3,834", "label": "Customer reviews" } },
-        "s3": { "type": "stat", "settings": { "value": "100,000+", "label": "Health-conscious users" } },
-        "s4": { "type": "stat", "settings": { "value": "5,000mg", "label": "Collagen per sachet" } }
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "4.5★",
+            "label": "Average rating"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "3,834",
+            "label": "Customer reviews"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "100,000+",
+            "label": "Health-conscious users"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "5,000mg",
+            "label": "Collagen per sachet"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {}
     },
     "compare": {
       "type": "dml-compare",
       "blocks": {
-        "r1": { "type": "row", "settings": { "row": "Price per box", "v1": "S$188", "v2": "S$97", "v3": "S$92" } },
-        "r2": { "type": "row", "settings": { "row": "Total", "v1": "S$188", "v2": "S$291 (3 boxes)", "v3": "S$1,100 (12 boxes)" } },
-        "r3": { "type": "row", "settings": { "row": "You save", "v1": "—", "v2": "S$273", "v3": "S$1,156" } },
-        "r4": { "type": "row", "settings": { "row": "Free delivery", "v1": "—", "v2": "✓", "v3": "✓" } },
-        "r5": { "type": "row", "settings": { "row": "Free membership upgrade", "v1": "—", "v2": "✓", "v3": "✓" } },
-        "r6": { "type": "row", "settings": { "row": "Cancel or pause anytime", "v1": "n/a", "v2": "✓", "v3": "✓" } }
+        "r1": {
+          "type": "row",
+          "settings": {
+            "row": "Free delivery",
+            "v1": "—",
+            "v2": "✓",
+            "v3": "✓"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "row": "Free membership upgrade",
+            "v1": "—",
+            "v2": "✓",
+            "v3": "✓"
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "row": "Cancel or pause anytime",
+            "v1": "n/a",
+            "v2": "✓",
+            "v3": "✓"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
-      "settings": {}
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "product": "pure-collagen-repair-recovery",
+        "col_2_plan": "1",
+        "col_3_plan": "2"
+      }
     },
     "pricing": {
       "type": "dml-pricing",
       "blocks": {
-        "p1": { "type": "plan", "settings": { "name": "One-time purchase", "per_day": "≈ S$6.27 / day", "price": "S$188", "unit": "/ box", "total": "S$188", "perks": "1 box · 30 sachets\nStandard delivery" } },
-        "p2": { "type": "plan", "settings": { "name": "Quarterly plan · 3 boxes", "tag": "Most popular", "price": "S$97", "unit": "/ box", "per_day": "≈ S$3.23 / day", "savings": "Save S$273 · S$291 total", "total": "S$291", "perks": "Free delivery\nFree membership upgrade\nCancel or pause anytime", "is_default": true } },
-        "p3": { "type": "plan", "settings": { "name": "Annual plan · 12 boxes", "tag": "Best value", "tag_style": "accent", "price": "S$92", "unit": "/ box", "per_day": "≈ S$3.06 / day", "savings": "Save S$1,156 · S$1,100 total", "total": "S$1,100", "perks": "Free delivery\nFree membership upgrade\nPoints for gift redemption" } }
+        "p1": {
+          "type": "plan",
+          "settings": {
+            "plan": "one_time",
+            "perks": "1 box · 30 sachets\nStandard delivery"
+          }
+        },
+        "p2": {
+          "type": "plan",
+          "settings": {
+            "plan": "1",
+            "name": "Quarterly plan",
+            "tag": "Most popular",
+            "perks": "Free delivery\nFree membership upgrade\nCancel or pause anytime",
+            "is_default": true
+          }
+        },
+        "p3": {
+          "type": "plan",
+          "settings": {
+            "plan": "2",
+            "name": "Annual plan",
+            "tag": "Best value",
+            "tag_style": "accent",
+            "perks": "Free delivery\nFree membership upgrade\nPoints for gift redemption"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3"],
-      "settings": {}
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "product": "pure-collagen-repair-recovery"
+      }
     },
     "reviews": {
       "type": "dml-reviews",
       "blocks": {
-        "r1": { "type": "review", "settings": { "quote": "My knees feel noticeably better on my morning runs. I take one sachet every day.", "author": "Sample review · Runner" } },
-        "r2": { "type": "review", "settings": { "quote": "Less back ache after the gym and easier to get moving in the morning.", "author": "Sample review · Gym-goer" } },
-        "r3": { "type": "review", "settings": { "quote": "Mixes into my coffee with no taste. The membership made it much more affordable.", "author": "Sample review · Member" } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "My knees feel noticeably better on my morning runs. I take one sachet every day.",
+            "author": "Sample review · Runner"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "Less back ache after the gym and easier to get moving in the morning.",
+            "author": "Sample review · Gym-goer"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "Mixes into my coffee with no taste. The membership made it much more affordable.",
+            "author": "Sample review · Member"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {}
     },
     "steps": {
       "type": "dml-steps",
       "blocks": {
-        "s1": { "type": "step", "settings": { "title": "Tear a sachet", "text": "One 5.1g single-serve sachet per day." } },
-        "s2": { "type": "step", "settings": { "title": "Mix it in", "text": "Stir into water, smoothies, shakes or soups." } },
-        "s3": { "type": "step", "settings": { "title": "Make it a habit", "text": "Best on an empty stomach in the morning, paired with Vitamin C." } }
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Tear a sachet",
+            "text": "One 5.1g single-serve sachet per day."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Mix it in",
+            "text": "Stir into water, smoothies, shakes or soups."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Make it a habit",
+            "text": "Best on an empty stomach in the morning, paired with Vitamin C."
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {}
     },
     "faq": {
       "type": "dml-faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "How do I take it?", "answer": "<p>Mix one sachet daily into water, smoothies, protein shakes or soups, preferably on an empty stomach in the morning.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "Is it safe during pregnancy or breastfeeding?", "answer": "<p>Please consult your healthcare professional before use.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "Can children take it?", "answer": "<p>Only with professional guidance.</p>" } },
-        "q4": { "type": "question", "settings": { "question": "Can I pause or cancel my membership?", "answer": "<p>Yes, you can pause or cancel anytime.</p>" } },
-        "q5": { "type": "question", "settings": { "question": "Is it Halal and lab tested?", "answer": "<p>Yes. It is Halal certified, 3rd-party lab tested and glyphosate free, and produced under GMP, ISO 22000 and HACCP standards.</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Mix one sachet daily into water, smoothies, protein shakes or soups, preferably on an empty stomach in the morning.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Is it safe during pregnancy or breastfeeding?",
+            "answer": "<p>Please consult your healthcare professional before use.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Can children take it?",
+            "answer": "<p>Only with professional guidance.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Can I pause or cancel my membership?",
+            "answer": "<p>Yes, you can pause or cancel anytime.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Is it Halal and lab tested?",
+            "answer": "<p>Yes. It is Halal certified, 3rd-party lab tested and glyphosate free, and produced under GMP, ISO 22000 and HACCP standards.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
       "settings": {}
     },
     "final": {
@@ -147,5 +419,19 @@
       "settings": {}
     }
   },
-  "order": ["hero", "trust", "benefits", "standards", "science", "ingredients", "stats", "reviews", "pricing", "compare", "steps", "faq", "final"]
+  "order": [
+    "hero",
+    "trust",
+    "benefits",
+    "standards",
+    "science",
+    "ingredients",
+    "stats",
+    "reviews",
+    "pricing",
+    "compare",
+    "steps",
+    "faq",
+    "final"
+  ]
 }

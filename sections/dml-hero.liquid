@@ -2,10 +2,25 @@
   assign uid = 'dml-hero-' | append: section.id
   assign s = section.settings
   assign product = s.product
+  assign variant = product.selected_or_first_available_variant
+  assign price_text = s.price_text
+  assign member_cents = 0
+  assign member_note = ''
+  assign per_day_text = ''
   if product != blank
-    assign price_text = product.selected_or_first_available_variant.price | money_without_trailing_zeros
-  else
-    assign price_text = s.price_text
+    assign price_text = variant.price | money
+    for alloc in variant.selling_plan_allocations
+      if member_cents == 0 or alloc.per_delivery_price < member_cents
+        assign member_cents = alloc.per_delivery_price
+      endif
+    endfor
+    if member_cents > 0
+      assign member_amount = member_cents | money
+      assign member_note = s.member_note | replace: '{amount}', member_amount
+      assign day_cents = member_cents | divided_by: 30 | round
+      assign day_amount = day_cents | money
+      assign per_day_text = s.per_day | replace: '{amount}', day_amount
+    endif
   endif
 -%}
 
@@ -25,8 +40,8 @@
           {%- for chip in chips -%}{%- assign c = chip | strip_newlines | strip -%}{%- if c != blank -%}<li>{{ c }}</li>{%- endif -%}{%- endfor -%}
         </ul>
       {%- endif -%}
-      <p class="dml-hero__price"><strong>{{ price_text }}</strong><span>{{ s.price_note }}</span></p>
-      {%- if s.per_day != blank -%}<p class="dml-hero__perday">{{ s.per_day }}</p>{%- endif -%}
+      <p class="dml-hero__price"><strong>{{ price_text }}</strong><span>{{ s.price_note }}{% if member_note != blank %} · {{ member_note }}{% endif %}</span></p>
+      {%- if per_day_text != blank -%}<p class="dml-hero__perday">{{ per_day_text }}</p>{%- endif -%}
       <div class="dml-hero__actions">
         <a class="dml-hero__btn" href="{{ s.cta_link }}" data-dml-track="hero_cta">{{ s.cta_label }}</a>
         {%- if s.link_label != blank -%}<a class="dml-hero__link" href="{{ s.link_url }}">{{ s.link_label }} →</a>{%- endif -%}
@@ -118,35 +133,190 @@
   "name": "DML Hero",
   "class": "dml-section",
   "settings": [
-    { "type": "header", "content": "Product" },
-    { "type": "product", "id": "product", "label": "Product", "info": "Optional. Price is read from the product; otherwise the text below is used." },
-    { "type": "text", "id": "price_text", "label": "Price (when no product)", "default": "S$188" },
-    { "type": "text", "id": "price_note", "label": "Price note", "default": "30 sachets · or from S$91.67/box with membership" },
-    { "type": "header", "content": "Content" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Dr. Mark Leong · Pure Collagen" },
-    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Support your joints. Move freely again." },
-    { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 0.1, "default": 4.5 },
-    { "type": "text", "id": "review_count", "label": "Review count", "default": "3,834" },
-    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Hydrolysed grass-fed bovine collagen with turmeric extract. One sachet a day to support joint health, muscle recovery and everyday flexibility.</p>" },
-    { "type": "image_picker", "id": "image", "label": "Image", "info": "Falls back to the bundled product image." },
-    { "type": "text", "id": "badge_title", "label": "Badge title", "default": "Made in Taiwan" },
-    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Grass-fed · Backed by clinical studies" },
-    { "type": "textarea", "id": "chips", "label": "Proof chips (one per line)", "default": "Halal certified\n3rd-party lab tested\nGlyphosate free" },
-    { "type": "text", "id": "per_day", "label": "Cost-per-day callout", "default": "Just S$3.23/day on the quarterly plan" },
-    { "type": "text", "id": "reviews_anchor", "label": "Reviews anchor ID", "default": "reviews" },
-    { "type": "header", "content": "Call to action" },
-    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Choose your plan" },
-    { "type": "text", "id": "cta_link", "label": "Button link", "default": "#pricing" },
-    { "type": "text", "id": "link_label", "label": "Secondary link label", "default": "See what's inside" },
-    { "type": "text", "id": "link_url", "label": "Secondary link", "default": "#ingredients" },
-    { "type": "text", "id": "cta_note", "label": "Note under button", "default": "Free delivery on memberships · Cancel or pause anytime" },
-    { "type": "header", "content": "Style" },
-    { "type": "color", "id": "color_primary", "label": "Primary", "default": "#1b2550" },
-    { "type": "color", "id": "color_accent", "label": "Button / accent", "default": "#f86239" },
-    { "type": "color", "id": "color_gold", "label": "Gold", "default": "#c8a05a" },
-    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 72 }
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Optional. Price is read from the product; otherwise the text below is used."
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price text (when no product)",
+      "info": "Only used if no product is selected. With a product, the price follows the store currency."
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Price note",
+      "default": "30 sachets"
+    },
+    {
+      "type": "text",
+      "id": "member_note",
+      "label": "Membership note",
+      "default": "or from {amount}/box with a membership",
+      "info": "{amount} = lowest subscription price per delivery, in the store currency. Hidden if the product has no subscription plan."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Dr. Mark Leong · Pure Collagen"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Support your joints. Move freely again."
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "Rating",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "default": 4.5
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review count",
+      "default": "3,834"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Hydrolysed grass-fed bovine collagen with turmeric extract. One sachet a day to support joint health, muscle recovery and everyday flexibility.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Falls back to the bundled product image."
+    },
+    {
+      "type": "text",
+      "id": "badge_title",
+      "label": "Badge title",
+      "default": "Made in Taiwan"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Grass-fed · Backed by clinical studies"
+    },
+    {
+      "type": "textarea",
+      "id": "chips",
+      "label": "Proof chips (one per line)",
+      "default": "Halal certified\n3rd-party lab tested\nGlyphosate free"
+    },
+    {
+      "type": "text",
+      "id": "per_day",
+      "label": "Cost-per-day callout",
+      "default": "Just {amount}/day with a membership",
+      "info": "{amount} = lowest subscription price divided by 30 days. Hidden if the product has no subscription plan."
+    },
+    {
+      "type": "text",
+      "id": "reviews_anchor",
+      "label": "Reviews anchor ID",
+      "default": "reviews"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Choose your plan"
+    },
+    {
+      "type": "text",
+      "id": "cta_link",
+      "label": "Button link",
+      "default": "#pricing"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Secondary link label",
+      "default": "See what's inside"
+    },
+    {
+      "type": "text",
+      "id": "link_url",
+      "label": "Secondary link",
+      "default": "#ingredients"
+    },
+    {
+      "type": "text",
+      "id": "cta_note",
+      "label": "Note under button",
+      "default": "Free delivery on memberships · Cancel or pause anytime"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary",
+      "default": "#1b2550"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Button / accent",
+      "default": "#f86239"
+    },
+    {
+      "type": "color",
+      "id": "color_gold",
+      "label": "Gold",
+      "default": "#c8a05a"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
   ],
-  "presets": [{ "name": "DML Hero" }]
+  "presets": [
+    {
+      "name": "DML Hero"
+    }
+  ]
 }
 {% endschema %}
