@@ -1,6 +1,7 @@
 {%- liquid
   assign uid = 'dml-hero-' | append: section.id
   assign s = section.settings
+  assign image_alt = s.image.alt | default: s.heading | strip_newlines
   assign rating_text = s.rating_label | replace: '{rating}', s.rating | replace: '{count}', s.review_count
   assign stars_text = s.stars_label | replace: '{rating}', s.rating
   assign product = s.product
@@ -53,7 +54,7 @@
 
     <div class="dml-hero__media">
       {%- if s.image != blank -%}
-        {{ s.image | image_url: width: 900 | image_tag: widths: '450, 600, 900', sizes: '(min-width: 861px) 45vw, 90vw', loading: 'eager', fetchpriority: 'high', alt: s.image.alt | default: s.heading }}
+        {{ s.image | image_url: width: 900 | image_tag: widths: '450, 600, 900', sizes: '(min-width: 861px) 45vw, 90vw', loading: 'eager', fetchpriority: 'high', alt: image_alt }}
       {%- else -%}
         <img src="{{ 'dml-collagen-box.png' | asset_url }}" alt="{{ s.heading | escape }}" width="900" height="900" loading="eager" fetchpriority="high">
       {%- endif -%}
@@ -63,6 +64,10 @@
     </div>
   </div>
 </div>
+
+{%- if product != blank -%}
+  <script type="application/ld+json">{{ product | structured_data }}</script>
+{%- endif -%}
 
 {%- style -%}
   #{{ uid }}, #{{ uid }} *, #{{ uid }} *::before, #{{ uid }} *::after { box-sizing: border-box; }
@@ -299,7 +304,7 @@
       "type": "color",
       "id": "color_accent",
       "label": "Button / accent",
-      "default": "#f86239"
+      "default": "#c2410c"
     },
     {
       "type": "color",

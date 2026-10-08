@@ -12,6 +12,8 @@
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- else -%}
+      <link rel="icon" href="data:,">
     {%- endif -%}
 
     <title>
@@ -19,9 +21,19 @@
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    {%- liquid
+      assign meta_desc = page_description
+      if meta_desc == blank
+        assign meta_desc = page.content | strip_html | strip_newlines | truncate: 160
+      endif
+      if meta_desc == blank
+        assign meta_desc = shop.description
+      endif
+      if meta_desc == blank
+        assign meta_desc = page_title | append: ' - ' | append: shop.name
+      endif
+    -%}
+    <meta name="description" content="{{ meta_desc | strip | escape_once }}">
 
     {% render 'meta-tags' %}
 

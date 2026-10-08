@@ -47,7 +47,7 @@
   }
   #{{ uid }} .dml-reviews__wrap { max-width: 1120px; margin: 0 auto; }
   #{{ uid }} .dml-reviews__head { text-align: center; }
-  #{{ uid }} .dml-reviews__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+  #{{ uid }} .dml-reviews__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: {{ s.color_eyebrow }}; margin-bottom: 10px; }
   #{{ uid }} .dml-reviews__title { font: 800 clamp(26px, 4vw, 38px)/1.15 'Montserrat', sans-serif; color: inherit; }
   #{{ uid }} .dml-reviews__rating { display: flex; justify-content: center; align-items: center; gap: 14px; margin: 18px 0 40px; }
   #{{ uid }} .dml-reviews__rating strong { font: 800 48px/1 'Montserrat', sans-serif; }
@@ -138,7 +138,13 @@
       "type": "color",
       "id": "color_accent",
       "label": "Accent",
-      "default": "#f86239"
+      "default": "#c2410c"
+    },
+    {
+      "type": "color",
+      "id": "color_eyebrow",
+      "label": "Eyebrow text",
+      "default": "#c8a05a"
     },
     {
       "type": "color",

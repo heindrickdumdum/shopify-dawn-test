@@ -1,12 +1,13 @@
 {%- liquid
   assign uid = 'dml-final-' | append: section.id
   assign s = section.settings
+  assign image_alt = s.image.alt | default: s.heading | strip_newlines
 -%}
 
 <div id="{{ uid }}" class="dml-final">
   <div class="dml-final__wrap">
     {%- if s.image != blank -%}
-      {{ s.image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '200px', loading: 'lazy', alt: s.image.alt | default: s.heading }}
+      {{ s.image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '200px', loading: 'lazy', alt: image_alt }}
     {%- elsif s.use_bundled_image -%}
       <img src="{{ 'dml-collagen-sachets.png' | asset_url }}" alt="{{ s.heading | escape }}" width="200" height="200" loading="lazy">
     {%- endif -%}
@@ -108,7 +109,7 @@
       "type": "color",
       "id": "color_accent",
       "label": "Button",
-      "default": "#f86239"
+      "default": "#c2410c"
     },
     {
       "type": "color",

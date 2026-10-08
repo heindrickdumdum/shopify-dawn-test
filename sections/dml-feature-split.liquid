@@ -1,6 +1,7 @@
 {%- liquid
   assign uid = 'dml-split-' | append: section.id
   assign s = section.settings
+  assign image_alt = s.image.alt | default: s.heading | strip_newlines
   case s.fallback_image
     when 'helps'
       assign fallback = 'dml-collagen-helps.png'
@@ -18,7 +19,7 @@
   <div class="dml-split__wrap">
     <div class="dml-split__media">
       {%- if s.image != blank -%}
-        {{ s.image | image_url: width: 900 | image_tag: widths: '450, 600, 900', sizes: '(min-width: 861px) 45vw, 90vw', loading: 'lazy', alt: s.image.alt | default: s.heading }}
+        {{ s.image | image_url: width: 900 | image_tag: widths: '450, 600, 900', sizes: '(min-width: 861px) 45vw, 90vw', loading: 'lazy', alt: image_alt }}
       {%- elsif fallback != blank -%}
         <img src="{{ fallback | asset_url }}" alt="{{ s.heading | escape }}" width="900" height="900" loading="lazy">
       {%- endif -%}
@@ -149,7 +150,7 @@
       "type": "color",
       "id": "color_accent",
       "label": "Accent",
-      "default": "#f86239"
+      "default": "#c2410c"
     },
     {
       "type": "color",
