@@ -210,50 +210,6 @@
         "padding_bottom": 48
       }
     },
-    "science": {
-      "type": "dml-feature-split",
-      "blocks": {
-        "c1": {
-          "type": "check",
-          "settings": {
-            "text": "5,000mg hydrolysed bovine collagen per sachet"
-          }
-        },
-        "c2": {
-          "type": "check",
-          "settings": {
-            "text": "100mg turmeric (Curcuma longa) extract"
-          }
-        },
-        "c3": {
-          "type": "check",
-          "settings": {
-            "text": "Only 18 calories and 0g sugar per sachet"
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/dml-collagen-science.jpg",
-        "fallback_image": "science",
-        "image_position": "right",
-        "anchor_id": "",
-        "eyebrow": "The science",
-        "heading": "Small peptides. Fast absorption.",
-        "text": "<p>Hydrolysed collagen is broken into small peptides so it is absorbed quickly into the bloodstream, paired with turmeric extract for a dual-action formula.</p>",
-        "color_primary": "#202f5a",
-        "color_accent": "#e96046",
-        "color_accent_text": "#bf4a30",
-        "color_bg": "#f6f4ef",
-        "color_text": "#5b5b66",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
     "ingredients": {
       "type": "dml-feature-split",
       "settings": {
@@ -694,6 +650,54 @@
         "padding_top": 48,
         "padding_bottom": 24
       }
+    },
+    "formula": {
+      "type": "dml-formula-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/dml-formula-dose.jpg",
+            "fallback": "dose",
+            "title": "Clinically effective dose",
+            "text": "Each sachet delivers 5,000mg of collagen, a concentrated daily dose to support joints, cartilage and connective tissue."
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/dml-formula-dual.jpg",
+            "fallback": "dual",
+            "title": "Dual-action formula",
+            "text": "Collagen supports structural tissue while turmeric extract supports a healthy inflammatory response. Two actives working together."
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/dml-formula-pure.jpg",
+            "fallback": "pure",
+            "title": "Clean, pure ingredients",
+            "text": "No chemical fillers, artificial additives or unnecessary ingredients. Just collagen peptides and turmeric."
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/dml-collagen-science.jpg",
+            "fallback": "peptide",
+            "title": "Hydrolysed peptide delivery",
+            "text": "Collagen is broken down into small hydrolysed peptides, so it is easier to digest and is absorbed quickly into the bloodstream."
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -701,8 +705,8 @@
     "hero",
     "trust",
     "benefits",
+    "formula",
     "standards",
-    "science",
     "ingredients",
     "stats",
     "reviews",
