@@ -10,6 +10,23 @@
 {
   "layout": "landing",
   "sections": {
+    "header": {
+      "type": "dml-header",
+      "settings": {
+        "logo": "shopify://shop_images/DML_Brand_Logo_TM_Artboard.avif",
+        "logo_width": 150,
+        "logo_url": "",
+        "show_cta": true,
+        "cta_label": "Shop all products",
+        "cta_url": "",
+        "sticky": true,
+        "color_bg": "#ffffff",
+        "color_border": "#e7e3da",
+        "color_primary": "#202f5a",
+        "color_accent": "#bf4a30",
+        "padding_y": 14
+      }
+    },
     "hero": {
       "type": "dml-hero",
       "settings": {
@@ -37,6 +54,7 @@
         "cta_note": "Free delivery on memberships · Cancel or pause anytime",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_gold": "#c8a05a",
         "color_text": "#5b5b66",
         "color_star": "#f5a623",
@@ -133,6 +151,7 @@
         "lead": "Made for active adults, weekend athletes and anyone who wants to keep doing what they love.",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_bg": "#ffffff",
         "color_text": "#5b5b66",
         "color_border": "#e7e3da",
@@ -184,6 +203,7 @@
         "text": "",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_bg": "#ffffff",
         "color_text": "#5b5b66",
         "padding_top": 48,
@@ -227,6 +247,7 @@
         "text": "<p>Hydrolysed collagen is broken into small peptides so it is absorbed quickly into the bloodstream, paired with turmeric extract for a dual-action formula.</p>",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_bg": "#f6f4ef",
         "color_text": "#5b5b66",
         "padding_top": 48,
@@ -245,6 +266,7 @@
         "text": "<p>Hydrolyzed bovine collagen peptides (grass-fed, pasture-raised) and turmeric. Each box has 30 single-serve sachets of 5.1g, one month of daily support.</p>",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_bg": "#f6f4ef",
         "color_text": "#5b5b66",
         "padding_top": 48,
@@ -341,6 +363,7 @@
         "color_bg": "#202f5a",
         "color_text": "#ffffff",
         "color_accent": "#e96046",
+        "color_eyebrow": "#c8a05a",
         "color_star": "#f5a623",
         "padding_top": 72,
         "padding_bottom": 72
@@ -412,6 +435,7 @@
         "sticky_label": "Choose plan",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_bg": "#ffffff",
         "color_text": "#5b5b66",
         "color_border": "#e7e3da",
@@ -479,6 +503,7 @@
         "cta_link": "#pricing",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_bg": "#ffffff",
         "color_text": "#5b5b66",
         "color_border": "#e7e3da",
@@ -521,6 +546,7 @@
         "heading": "Easy as 1-2-3",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_gold": "#c8a05a",
         "color_bg": "#ffffff",
         "color_text": "#5b5b66",
@@ -579,6 +605,7 @@
         "heading": "Questions, answered",
         "color_primary": "#202f5a",
         "color_accent": "#e96046",
+        "color_accent_text": "#bf4a30",
         "color_bg": "#ffffff",
         "color_text": "#5b5b66",
         "color_border": "#e7e3da",
@@ -604,10 +631,6 @@
         "padding_top": 72,
         "padding_bottom": 32
       }
-    },
-    "header": {
-      "type": "dml-header",
-      "settings": {}
     },
     "footer": {
       "type": "dml-footer",
@@ -655,7 +678,22 @@
         "l4",
         "l5"
       ],
-      "settings": {}
+      "settings": {
+        "logo": "shopify://shop_images/DML_Brand_Logo_White_TM_ce8c85ba-e4bb-4ca1-86fc-08ade0408943.webp",
+        "logo_width": 160,
+        "logo_url": "",
+        "tagline": "Science-backed wellness from Dr. Mark Leong.",
+        "nav_label": "Footer",
+        "copyright": "© {year} Dr. Mark Leong. All rights reserved.",
+        "disclaimer": "These statements have not been evaluated by a health authority. This product is not intended to diagnose, treat, cure or prevent any disease. Consult a healthcare professional before use.",
+        "color_bg": "#182348",
+        "color_text": "#d6dbf0",
+        "color_link": "#ffffff",
+        "color_muted": "#aab1d6",
+        "color_border": "#33406e",
+        "padding_top": 48,
+        "padding_bottom": 24
+      }
     }
   },
   "order": [
