@@ -14,7 +14,7 @@
       "type": "dml-header",
       "settings": {
         "logo": "shopify://shop_images/DML_Brand_Logo_TM_Artboard.avif",
-        "logo_width": 200,
+        "logo_width": 280,
         "logo_url": "",
         "show_cta": true,
         "cta_label": "Shop all products",
@@ -697,7 +697,7 @@
       ],
       "settings": {
         "logo": "shopify://shop_images/DML_Brand_Logo_White_TM_ce8c85ba-e4bb-4ca1-86fc-08ade0408943.webp",
-        "logo_width": 160,
+        "logo_width": 280,
         "logo_url": "",
         "tagline": "Science-backed wellness from Dr. Mark Leong.",
         "nav_label": "Footer",
