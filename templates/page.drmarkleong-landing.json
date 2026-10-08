@@ -1,6 +1,11 @@
 /*
- * Landing page template: Dr Mark Leong - Pure Collagen Repair & Recovery.
- * Uses layout/landing.liquid (no header and no footer).
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
  */
 {
   "layout": "landing",
@@ -9,7 +14,36 @@
       "type": "dml-hero",
       "settings": {
         "product": "pure-collagen-repair-recovery",
-        "image": "shopify://shop_images/dml-collagen-box.png"
+        "price_text": "",
+        "price_note": "30 sachets",
+        "member_note": "or from {amount}/box with a membership",
+        "eyebrow": "Dr. Mark Leong · Pure Collagen",
+        "heading": "Support your joints. Move freely again.",
+        "rating": 4.5,
+        "review_count": "3,834",
+        "rating_label": "{rating} from {count} reviews",
+        "stars_label": "{rating} out of 5 stars",
+        "description": "<p>Hydrolysed grass-fed bovine collagen with turmeric extract. One sachet a day to support joint health, muscle recovery and everyday flexibility.</p>",
+        "image": "shopify://shop_images/dml-collagen-box.png",
+        "badge_title": "Made in Taiwan",
+        "badge_text": "Grass-fed · Backed by clinical studies",
+        "chips": "Halal certified\n3rd-party lab tested\nGlyphosate free",
+        "per_day": "Just {amount}/day with a membership",
+        "reviews_anchor": "reviews",
+        "cta_label": "Choose your plan",
+        "cta_link": "#pricing",
+        "link_label": "See what's inside",
+        "link_url": "#ingredients",
+        "cta_note": "Free delivery on memberships · Cancel or pause anytime",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
+        "color_gold": "#c8a05a",
+        "color_text": "#5b5b66",
+        "color_star": "#f5a623",
+        "color_bg_from": "#fbf9f4",
+        "color_bg_to": "#eef0f8",
+        "padding_top": 48,
+        "padding_bottom": 72
       }
     },
     "trust": {
@@ -52,7 +86,13 @@
         "t3",
         "t4",
         "t5"
-      ]
+      ],
+      "settings": {
+        "color_bg": "#1b2550",
+        "color_text": "#ffffff",
+        "color_check": "#c8a05a",
+        "padding_y": 22
+      }
     },
     "benefits": {
       "type": "dml-benefits",
@@ -88,6 +128,15 @@
         "b3"
       ],
       "settings": {
+        "eyebrow": "Why it works",
+        "heading": "Support for the way you move",
+        "lead": "Made for active adults, weekend athletes and anyone who wants to keep doing what they love.",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
+        "color_bg": "#ffffff",
+        "color_text": "#5b5b66",
+        "color_border": "#e7e3da",
+        "padding_top": 72,
         "padding_bottom": 24
       }
     },
@@ -126,10 +175,19 @@
         "c4"
       ],
       "settings": {
+        "image": "shopify://shop_images/dml-collagen-helps.png",
         "fallback_image": "helps",
         "image_position": "left",
+        "anchor_id": "",
+        "eyebrow": "",
         "heading": "Held to a higher standard",
-        "image": "shopify://shop_images/dml-collagen-helps.png"
+        "text": "",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
+        "color_bg": "#ffffff",
+        "color_text": "#5b5b66",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "science": {
@@ -160,28 +218,37 @@
         "c3"
       ],
       "settings": {
+        "image": "shopify://shop_images/dml-collagen-science.jpg",
         "fallback_image": "science",
         "image_position": "right",
+        "anchor_id": "",
         "eyebrow": "The science",
         "heading": "Small peptides. Fast absorption.",
         "text": "<p>Hydrolysed collagen is broken into small peptides so it is absorbed quickly into the bloodstream, paired with turmeric extract for a dual-action formula.</p>",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
         "color_bg": "#f6f4ef",
-        "image": "shopify://shop_images/dml-collagen-science.jpg"
+        "color_text": "#5b5b66",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "ingredients": {
       "type": "dml-feature-split",
-      "blocks": {},
-      "block_order": [],
       "settings": {
+        "image": "shopify://shop_images/dml-collagen-ingredients.png",
         "fallback_image": "ingredients",
-        "anchor_id": "ingredients",
         "image_position": "left",
+        "anchor_id": "ingredients",
         "eyebrow": "What's inside",
         "heading": "Two ingredients. Nothing to hide.",
         "text": "<p>Hydrolyzed bovine collagen peptides (grass-fed, pasture-raised) and turmeric. Each box has 30 single-serve sachets of 5.1g, one month of daily support.</p>",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
         "color_bg": "#f6f4ef",
-        "image": "shopify://shop_images/dml-collagen-ingredients.png"
+        "color_text": "#5b5b66",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "stats": {
@@ -222,7 +289,135 @@
         "s3",
         "s4"
       ],
-      "settings": {}
+      "settings": {
+        "color_bg": "#f6f4ef",
+        "color_value": "#1b2550",
+        "color_label": "#5b5b66",
+        "padding_y": 44
+      }
+    },
+    "reviews": {
+      "type": "dml-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "My knees feel noticeably better on my morning runs. I take one sachet every day.",
+            "author": "Sample review · Runner"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "Less back ache after the gym and easier to get moving in the morning.",
+            "author": "Sample review · Gym-goer"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "Mixes into my coffee with no taste. The membership made it much more affordable.",
+            "author": "Sample review · Member"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "anchor_id": "reviews",
+        "eyebrow": "Social proof",
+        "heading": "Trusted by over 100,000 health-conscious users",
+        "rating": 4.5,
+        "review_count": "3,834",
+        "reviews_label": "{count} verified reviews",
+        "stars_label": "{rating} out of 5 stars",
+        "footnote": "Sample review text for demonstration. Replace with live reviews from your review app.",
+        "color_bg": "#1b2550",
+        "color_text": "#ffffff",
+        "color_accent": "#f86239",
+        "color_star": "#f5a623",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "pricing": {
+      "type": "dml-pricing",
+      "blocks": {
+        "p1": {
+          "type": "plan",
+          "settings": {
+            "plan": "one_time",
+            "name": "",
+            "tag": "",
+            "tag_style": "primary",
+            "perks": "1 box · 30 sachets\nStandard delivery",
+            "is_default": false
+          }
+        },
+        "p2": {
+          "type": "plan",
+          "settings": {
+            "plan": "1",
+            "name": "Quarterly plan",
+            "tag": "Most popular",
+            "tag_style": "primary",
+            "perks": "Free delivery\nFree membership upgrade\nCancel or pause anytime",
+            "is_default": true
+          }
+        },
+        "p3": {
+          "type": "plan",
+          "settings": {
+            "plan": "2",
+            "name": "Annual plan",
+            "tag": "Best value",
+            "tag_style": "accent",
+            "perks": "Free delivery\nFree membership upgrade\nPoints for gift redemption",
+            "is_default": false
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "product": "pure-collagen-repair-recovery",
+        "one_time_product": "pure-collagen-repair-recovery",
+        "anchor_id": "pricing",
+        "eyebrow": "Pricing",
+        "heading": "Choose how you want to save",
+        "lead": "Join the membership for the lowest price per box, free delivery and points towards gifts.",
+        "one_time_label": "One-time purchase",
+        "price_placeholder": "—",
+        "empty_message": "Preview only: select a product in this section's settings to enable add to cart.",
+        "unit_label": "/ box",
+        "show_per_day": true,
+        "days_per_box": 30,
+        "per_day_label": "≈ {amount} / day",
+        "save_label": "Save {percent}% vs one-time",
+        "cta_label": "Add to cart",
+        "cta_note": "Secure checkout · Cancel or pause anytime",
+        "after_add": "cart",
+        "guarantee_items": "Secure checkout\nCancel or pause anytime\nFree delivery on memberships",
+        "show_sticky": true,
+        "sticky_offset": 600,
+        "sticky_label": "Choose plan",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
+        "color_bg": "#ffffff",
+        "color_text": "#5b5b66",
+        "color_border": "#e7e3da",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     },
     "compare": {
       "type": "dml-compare",
@@ -262,81 +457,34 @@
       ],
       "settings": {
         "product": "pure-collagen-repair-recovery",
+        "one_time_product": "",
+        "eyebrow": "Compare",
+        "heading": "Why most customers choose a membership",
+        "col_1": "One-time",
+        "col_2": "Quarterly",
         "col_2_plan": "1",
-        "col_3_plan": "2"
+        "col_3": "Annual",
+        "col_3_plan": "2",
+        "show_price_row": true,
+        "price_row_label": "Price per box",
+        "show_save_row": true,
+        "save_row_label": "You save",
+        "save_label": "{percent}% off",
+        "show_per_day_row": true,
+        "per_day_row_label": "Cost per day",
+        "days_per_box": 30,
+        "row_header_label": "Benefit",
+        "empty_message": "Select a product in this section's settings to show live prices.",
+        "cta_label": "Choose your plan",
+        "cta_link": "#pricing",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
+        "color_bg": "#ffffff",
+        "color_text": "#5b5b66",
+        "color_border": "#e7e3da",
+        "padding_top": 24,
+        "padding_bottom": 64
       }
-    },
-    "pricing": {
-      "type": "dml-pricing",
-      "blocks": {
-        "p1": {
-          "type": "plan",
-          "settings": {
-            "plan": "one_time",
-            "perks": "1 box · 30 sachets\nStandard delivery"
-          }
-        },
-        "p2": {
-          "type": "plan",
-          "settings": {
-            "plan": "1",
-            "name": "Quarterly plan",
-            "tag": "Most popular",
-            "perks": "Free delivery\nFree membership upgrade\nCancel or pause anytime",
-            "is_default": true
-          }
-        },
-        "p3": {
-          "type": "plan",
-          "settings": {
-            "plan": "2",
-            "name": "Annual plan",
-            "tag": "Best value",
-            "tag_style": "accent",
-            "perks": "Free delivery\nFree membership upgrade\nPoints for gift redemption"
-          }
-        }
-      },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3"
-      ],
-      "settings": {
-        "product": "pure-collagen-repair-recovery"
-      }
-    },
-    "reviews": {
-      "type": "dml-reviews",
-      "blocks": {
-        "r1": {
-          "type": "review",
-          "settings": {
-            "quote": "My knees feel noticeably better on my morning runs. I take one sachet every day.",
-            "author": "Sample review · Runner"
-          }
-        },
-        "r2": {
-          "type": "review",
-          "settings": {
-            "quote": "Less back ache after the gym and easier to get moving in the morning.",
-            "author": "Sample review · Gym-goer"
-          }
-        },
-        "r3": {
-          "type": "review",
-          "settings": {
-            "quote": "Mixes into my coffee with no taste. The membership made it much more affordable.",
-            "author": "Sample review · Member"
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3"
-      ],
-      "settings": {}
     },
     "steps": {
       "type": "dml-steps",
@@ -368,7 +516,17 @@
         "s2",
         "s3"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "How to use",
+        "heading": "Easy as 1-2-3",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
+        "color_gold": "#c8a05a",
+        "color_bg": "#ffffff",
+        "color_text": "#5b5b66",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
     },
     "faq": {
       "type": "dml-faq",
@@ -416,12 +574,35 @@
         "q4",
         "q5"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Questions, answered",
+        "color_primary": "#1b2550",
+        "color_accent": "#f86239",
+        "color_bg": "#ffffff",
+        "color_text": "#5b5b66",
+        "color_border": "#e7e3da",
+        "padding_top": 24,
+        "padding_bottom": 72
+      }
     },
     "final": {
       "type": "dml-final-cta",
       "settings": {
-        "image": "shopify://shop_images/dml-collagen-sachets.png"
+        "image": "shopify://shop_images/dml-collagen-sachets.png",
+        "use_bundled_image": true,
+        "heading": "Start your recovery today",
+        "text": "Join the membership and get the lowest price per box, free delivery and pause-anytime flexibility.",
+        "cta_label": "Start your membership today",
+        "cta_link": "#pricing",
+        "disclaimer": "These statements have not been evaluated by a health authority. This product is not intended to diagnose, treat, cure or prevent any disease. Consult a healthcare professional before use.",
+        "color_bg": "#1b2550",
+        "color_bg_2": "#27336b",
+        "color_accent": "#f86239",
+        "color_text": "#c5cae3",
+        "color_disclaimer": "#9aa0c0",
+        "padding_top": 72,
+        "padding_bottom": 32
       }
     }
   },
