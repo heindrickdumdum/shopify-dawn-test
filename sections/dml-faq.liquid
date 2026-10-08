@@ -49,13 +49,13 @@
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #5b5b66;
+    color: {{ s.color_text }};
   }
   #{{ uid }} .dml-faq__wrap { max-width: 760px; margin: 0 auto; }
   #{{ uid }} .dml-faq__head { text-align: center; margin-bottom: 36px; }
   #{{ uid }} .dml-faq__eyebrow { font: 700 12px/1.4 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
   #{{ uid }} .dml-faq__title { font: 800 clamp(26px, 4vw, 38px)/1.15 'Montserrat', sans-serif; color: var(--c-primary); }
-  #{{ uid }} .dml-faq__item { border-bottom: 1px solid #e7e3da; padding: 18px 0; }
+  #{{ uid }} .dml-faq__item { border-bottom: 1px solid {{ s.color_border }}; padding: 18px 0; }
   #{{ uid }} .dml-faq__q { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; font: 600 16px/1.4 'Montserrat', sans-serif; color: var(--c-primary); }
   #{{ uid }} .dml-faq__q::-webkit-details-marker { display: none; }
   #{{ uid }} .dml-faq__q::after { content: "+"; font-size: 22px; line-height: 1; color: var(--c-accent); flex: none; }
@@ -74,21 +74,86 @@
   "name": "DML FAQ",
   "class": "dml-section",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FAQ" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions, answered" },
-    { "type": "color", "id": "color_primary", "label": "Primary", "default": "#1b2550" },
-    { "type": "color", "id": "color_accent", "label": "Accent", "default": "#f86239" },
-    { "type": "color", "id": "color_bg", "label": "Background", "default": "#ffffff" },
-    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 24 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 72 }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Questions, answered"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary",
+      "default": "#1b2550"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent",
+      "default": "#f86239"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Body text",
+      "default": "#5b5b66"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Borders",
+      "default": "#e7e3da"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
   ],
   "blocks": [
     {
       "type": "question",
       "name": "Question",
       "settings": [
-        { "type": "text", "id": "question", "label": "Question", "default": "Question" },
-        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer</p>" }
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Answer</p>"
+        }
       ]
     }
   ],
@@ -97,9 +162,27 @@
     {
       "name": "DML FAQ",
       "blocks": [
-        { "type": "question", "settings": { "question": "How do I take it?", "answer": "<p>Mix one sachet daily into water, smoothies, protein shakes or soups, preferably on an empty stomach in the morning.</p>" } },
-        { "type": "question", "settings": { "question": "Is it safe during pregnancy or breastfeeding?", "answer": "<p>Please consult your healthcare professional before use.</p>" } },
-        { "type": "question", "settings": { "question": "Can children take it?", "answer": "<p>Only with professional guidance.</p>" } }
+        {
+          "type": "question",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Mix one sachet daily into water, smoothies, protein shakes or soups, preferably on an empty stomach in the morning.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Is it safe during pregnancy or breastfeeding?",
+            "answer": "<p>Please consult your healthcare professional before use.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Can children take it?",
+            "answer": "<p>Only with professional guidance.</p>"
+          }
+        }
       ]
     }
   ]

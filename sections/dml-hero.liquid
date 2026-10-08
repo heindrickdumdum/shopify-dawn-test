@@ -1,6 +1,8 @@
 {%- liquid
   assign uid = 'dml-hero-' | append: section.id
   assign s = section.settings
+  assign rating_text = s.rating_label | replace: '{rating}', s.rating | replace: '{count}', s.review_count
+  assign stars_text = s.stars_label | replace: '{rating}', s.rating
   assign product = s.product
   assign variant = product.selected_or_first_available_variant
   assign price_text = s.price_text
@@ -30,8 +32,8 @@
       {%- if s.eyebrow != blank -%}<p class="dml-hero__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
       <h1 class="dml-hero__title">{{ s.heading }}</h1>
       <p class="dml-hero__rating">
-        <span class="dml-hero__stars" style="--rating: {{ s.rating }}" role="img" aria-label="{{ s.rating }} out of 5 stars">★★★★★</span>
-        <a href="#{{ s.reviews_anchor }}">{{ s.rating }} from {{ s.review_count }} reviews</a>
+        <span class="dml-hero__stars" style="--rating: {{ s.rating }}" role="img" aria-label="{{ stars_text }}">★★★★★</span>
+        <a href="#{{ s.reviews_anchor }}">{{ rating_text }}</a>
       </p>
       {%- if s.description != blank -%}<div class="dml-hero__lead">{{ s.description }}</div>{%- endif -%}
       {%- if s.chips != blank -%}
@@ -69,12 +71,12 @@
     --c-primary: {{ s.color_primary }};
     --c-accent: {{ s.color_accent }};
     --c-gold: {{ s.color_gold }};
-    --c-text: #5b5b66;
+    --c-text: {{ s.color_text }};
     --f-head: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --f-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     display: block;
     padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px;
-    background: linear-gradient(160deg, #fbf9f4 0%, #eef0f8 100%);
+    background: linear-gradient(160deg, {{ s.color_bg_from }} 0%, {{ s.color_bg_to }} 100%);
     font-family: var(--f-body);
     font-size: 16px;
     line-height: 1.6;
@@ -85,7 +87,7 @@
   #{{ uid }} .dml-hero__eyebrow { font: 700 12px/1.4 var(--f-head); letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent); }
   #{{ uid }} .dml-hero__title { font: 800 clamp(32px, 5.2vw, 54px)/1.08 var(--f-head); color: var(--c-primary); margin: 10px 0 18px; }
   #{{ uid }} .dml-hero__rating { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 18px; }
-  #{{ uid }} .dml-hero__stars { --p: calc(var(--rating) / 5 * 100%); font-size: 18px; letter-spacing: 2px; line-height: 1; background: linear-gradient(90deg, #f5a623 var(--p), #d9d9d9 var(--p)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+  #{{ uid }} .dml-hero__stars { --p: calc(var(--rating) / 5 * 100%); font-size: 18px; letter-spacing: 2px; line-height: 1; background: linear-gradient(90deg, {{ s.color_star }} var(--p), #d9d9d9 var(--p)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
   #{{ uid }} .dml-hero__rating a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
   #{{ uid }} .dml-hero__chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; }
   #{{ uid }} .dml-hero__chips li { margin: 0; padding: 6px 12px 6px 28px; position: relative; background: #fff; border: 1px solid #e3e0d6; border-radius: 999px; font: 600 12px/1.3 var(--f-head); color: var(--c-primary); }
@@ -194,6 +196,19 @@
       "default": "3,834"
     },
     {
+      "type": "text",
+      "id": "rating_label",
+      "label": "Rating text",
+      "default": "{rating} from {count} reviews",
+      "info": "{rating} and {count} are replaced with the values above."
+    },
+    {
+      "type": "text",
+      "id": "stars_label",
+      "label": "Stars accessibility label",
+      "default": "{rating} out of 5 stars"
+    },
+    {
       "type": "richtext",
       "id": "description",
       "label": "Description",
@@ -291,6 +306,30 @@
       "id": "color_gold",
       "label": "Gold",
       "default": "#c8a05a"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Body text",
+      "default": "#5b5b66"
+    },
+    {
+      "type": "color",
+      "id": "color_star",
+      "label": "Star colour",
+      "default": "#f5a623"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_from",
+      "label": "Background gradient start",
+      "default": "#fbf9f4"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_to",
+      "label": "Background gradient end",
+      "default": "#eef0f8"
     },
     {
       "type": "range",

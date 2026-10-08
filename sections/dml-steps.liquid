@@ -32,7 +32,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #5b5b66;
+    color: {{ s.color_text }};
   }
   #{{ uid }} .dml-steps__wrap { max-width: 1120px; margin: 0 auto; }
   #{{ uid }} .dml-steps__head { text-align: center; }
@@ -54,22 +54,85 @@
   "name": "DML Steps",
   "class": "dml-section",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How to use" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Easy as 1-2-3" },
-    { "type": "color", "id": "color_primary", "label": "Primary", "default": "#1b2550" },
-    { "type": "color", "id": "color_accent", "label": "Accent", "default": "#f86239" },
-    { "type": "color", "id": "color_gold", "label": "Step number", "default": "#c8a05a" },
-    { "type": "color", "id": "color_bg", "label": "Background", "default": "#ffffff" },
-    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "How to use"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Easy as 1-2-3"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary",
+      "default": "#1b2550"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent",
+      "default": "#f86239"
+    },
+    {
+      "type": "color",
+      "id": "color_gold",
+      "label": "Step number",
+      "default": "#c8a05a"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Body text",
+      "default": "#5b5b66"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    }
   ],
   "blocks": [
     {
       "type": "step",
       "name": "Step",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title", "default": "Step" },
-        { "type": "textarea", "id": "text", "label": "Text" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
       ]
     }
   ],
@@ -78,9 +141,27 @@
     {
       "name": "DML Steps",
       "blocks": [
-        { "type": "step", "settings": { "title": "Tear a sachet", "text": "One 5.1g single-serve sachet per day." } },
-        { "type": "step", "settings": { "title": "Mix it in", "text": "Stir into water, smoothies, shakes or soups." } },
-        { "type": "step", "settings": { "title": "Make it a habit", "text": "Best on an empty stomach in the morning, paired with Vitamin C." } }
+        {
+          "type": "step",
+          "settings": {
+            "title": "Tear a sachet",
+            "text": "One 5.1g single-serve sachet per day."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Mix it in",
+            "text": "Stir into water, smoothies, shakes or soups."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Make it a habit",
+            "text": "Best on an empty stomach in the morning, paired with Vitamin C."
+          }
+        }
       ]
     }
   ]
